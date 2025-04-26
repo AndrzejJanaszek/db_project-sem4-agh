@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  react-app:
+    build:
+      context: ./client/
+      dockerfile: Dockerfile
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/src:/app/src
+      - ./client/public:/app/public
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # poprawia działanie hot-reload w Dockerze na Windows/Linux
