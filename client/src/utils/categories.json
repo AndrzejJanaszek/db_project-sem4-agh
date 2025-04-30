@@ -1,0 +1,860 @@
+{
+    "categories": [
+        {
+            "name": "Elektronika",
+            "subcategories": [
+                {
+                    "name": "Telefony i akcesoria",
+                    "subcategories": [
+                        {"name": "Smartfony"},
+                        {"name": "Smartwatche"},
+                        {"name": "Tablety"},
+                        {"name": "Akcesoria GSM"},
+                        {"name": "Etui, pokrowce i obudowy"}
+                    ]
+                },
+                {
+                    "name": "Komputery",
+                    "subcategories": [
+                        {"name": "Laptopy"},
+                        {"name": "Części do laptopów"},
+                        {"name": "Komputery stacjonarne"},
+                        {"name": "Podzespoły komputerowe"},
+                        {"name": "Drukarki i skanery"}
+                    ]
+                },
+                {
+                    "name": "Telewizory i akcesoria",
+                    "subcategories": [
+                        {"name": "Telewizory"},
+                        {"name": "Projektory"},
+                        {"name": "Słuchawki"},
+                        {"name": "Audio dla domu"},
+                        {"name": "Kino domowe"}
+                    ]
+                },
+                {
+                    "name": "Konsole i automaty",
+                    "subcategories": [
+                        {"name": "Konsole PlayStation 5"},
+                        {"name": "Konsole Xbox Series X/S"},
+                        {"name": "Konsole Playstation 4"},
+                        {"name": "Konsole Xbox One"},
+                        {"name": "Konsole Nintendo Switch"}
+                    ]
+                },
+                {
+                    "name": "AGD małe",
+                    "subcategories": [
+                        {"name": "Frytkownice beztłuszczowe"},
+                        {"name": "Odkurzacze pionowe"},
+                        {"name": "Do kuchni"},
+                        {"name": "Higiena i pielęgnacja"}
+                    ]
+                },
+                {
+                    "name": "AGD",
+                    "subcategories": [
+                        {"name": "Lodówki"},
+                        {"name": "Pralki"},
+                        {"name": "Suszarki do ubrań"},
+                        {"name": "Kuchnie wolnostojące"}
+                    ]
+                },
+                {
+                    "name": "AGD do zabudowy",
+                    "subcategories": [
+                        {"name": "Płyty grzewcze"},
+                        {"name": "Piekarniki do zabudowy"},
+                        {"name": "Zmywarki do zabudowy"},
+                        {"name": "Okapy"}
+                    ]
+                },
+                {
+                    "name": "Fotografia",
+                    "subcategories": [
+                        {"name": "Aparaty cyfrowe"},
+                        {"name": "Obiektywy"},
+                        {"name": "Akcesoria fotograficzne"},
+                        {"name": "Aparaty natychmiastowe (Instax, Polaroid)"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Moda",
+            "subcategories": [
+                {
+                    "name": "Ona",
+                    "subcategories": [
+                        {"name": "Odzież"},
+                        {"name": "Obuwie"},
+                        {"name": "Torebki"},
+                        {"name": "Bielizna"},
+                        {"name": "Dodatki"}
+                    ]
+                },
+                {
+                    "name": "On",
+                    "subcategories": [
+                        {"name": "Odzież"},
+                        {"name": "Obuwie"},
+                        {"name": "Bielizna"},
+                        {"name": "Akcesoria"},
+                        {"name": "Garnitury"}
+                    ]
+                },
+                {
+                    "name": "Dziecko",
+                    "subcategories": [
+                        {"name": "Odzież"},
+                        {"name": "Obuwie"},
+                        {"name": "Akcesoria"},
+                        {"name": "Ubrania dla niemowląt"},
+                        {"name": "Zabawki"}
+                    ]
+                },
+                {
+                    "name": "Modne dodatki",
+                    "subcategories": [
+                        {"name": "Zegarki"},
+                        {"name": "Biżuteria"},
+                        {"name": "Okulary przeciwsłoneczne"},
+                        {"name": "Czapki i szaliki"},
+                        {"name": "Torebki"}
+                    ]
+                },
+                {
+                    "name": "Prezenty",
+                    "subcategories": [
+                        {"name": "Zestawy prezentowe"},
+                        {"name": "Kosmetyki"},
+                        {"name": "Gadżety"},
+                        {"name": "Personalizowane prezenty"},
+                        {"name": "Ekskluzywne upominki"}
+                    ]
+                },
+                {
+                    "name": "Najmodniejsze buty",
+                    "subcategories": [
+                        {"name": "Sneakersy"},
+                        {"name": "Eleganckie obuwie"},
+                        {"name": "Sportowe buty"},
+                        {"name": "Kozaki"},
+                        {"name": "Sandały"}
+                    ]
+                },
+                {
+                    "name": "Trendy",
+                    "subcategories": [
+                        {"name": "Streetwear"},
+                        {"name": "Vintage"},
+                        {"name": "Minimalizm"},
+                        {"name": "Boho"},
+                        {"name": "Oversize"}
+                    ]
+                },
+                {
+                    "name": "Markowe sklepy",
+                    "subcategories": [
+                        {"name": "Nike"},
+                        {"name": "Adidas"},
+                        {"name": "Zara"},
+                        {"name": "H&M"},
+                        {"name": "Gucci"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Dom i ogród",
+            "subcategories": [
+                {
+                    "name": "Wyposażenie",
+                    "subcategories": [
+                        {"name": "Dekoracje i ozdoby"},
+                        {"name": "Ozdoby świąteczne i okolicznościowe"},
+                        {"name": "Dywany i dywaniki"},
+                        {"name": "Pościele i koce"},
+                        {"name": "Zabawne gadżety"},
+                        {"name": "Garnki i patelnie"},
+                        {"name": "Zastawa stołowa"},
+                        {"name": "Przybory kuchenne"},
+                        {"name": "Dekoracja i wystrój okien"}
+                    ]
+                },
+                {
+                    "name": "Narzędzia",
+                    "subcategories": [
+                        {"name": "Wkrętarki"},
+                        {"name": "Piły i pilarki"},
+                        {"name": "Szlifierki i polerki"},
+                        {"name": "Spawarki"},
+                        {"name": "Młotowiertarki"},
+                        {"name": "Odkurzacze przemysłowe"},
+                        {"name": "Przyrządy miernicze"},
+                        {"name": "Akcesoria i osprzęt"},
+                        {"name": "Urządzenia czyszczące"}
+                    ]
+                },
+                {
+                    "name": "Oświetlenie",
+                    "subcategories": [
+                        {"name": "Lampy wiszące"},
+                        {"name": "Halogeny i naświetlacze"},
+                        {"name": "Źródła światła"},
+                        {"name": "Oprawy oświetleniowe"}
+                    ]
+                },
+                {
+                    "name": "Meble",
+                    "subcategories": [
+                        {"name": "Meble do salonu"},
+                        {"name": "Meble do sypialni"},
+                        {"name": "Meble kuchenne"},
+                        {"name": "Meble do łazienki i toalety"}
+                    ]
+                },
+                {
+                    "name": "Budownictwo",
+                    "subcategories": [
+                        {"name": "Ogrzewanie"},
+                        {"name": "Hydraulika i akcesoria"},
+                        {"name": "Elektryka i akcesoria"},
+                        {"name": "Ściany i elewacje"}
+                    ]
+                },
+                {
+                    "name": "Ogród",
+                    "subcategories": [
+                        {"name": "Nawozy i preparaty"},
+                        {"name": "Odstraszacze zwierząt"},
+                        {"name": "Meble ogrodowe"},
+                        {"name": "Kosiarki spalinowe"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Supermarket",
+            "subcategories": [
+                {
+                    "name": "Produkty spożywcze",
+                    "subcategories": [
+                        {"name": "Kawy"},
+                        {"name": "Herbaty"},
+                        {"name": "Yerba mate"},
+                        {"name": "Zdrowa żywność"},
+                        {"name": "Bakalie, orzechy, pestki"},
+                        {"name": "Dekoracje cukiernicze"},
+                        {"name": "Produkty sypkie"},
+                        {"name": "Oliwa, olej, ocet"},
+                        {"name": "Oliwa z oliwek"}
+                    ]
+                },
+                {
+                    "name": "Artykuły dla zwierząt",
+                    "subcategories": [
+                        {"name": "Dla psów"},
+                        {"name": "Dla kotów"},
+                        {"name": "Akwarystyka"},
+                        {"name": "Dla gryzoni i królików"},
+                        {"name": "Terrarystyka"},
+                        {"name": "Dla ptaków egzotycznych"},
+                        {"name": "Karma dla psa"},
+                        {"name": "Karma dla kota"},
+                        {"name": "Legowiska dla psa"}
+                    ]
+                },
+                {
+                    "name": "Utrzymanie czystości",
+                    "subcategories": [
+                        {"name": "Proszki do prania"},
+                        {"name": "Suszarki na pranie"},
+                        {"name": "Deski do prasowania"},
+                        {"name": "Mydła kuchenne"},
+                        {"name": "Kosze na śmieci"},
+                        {"name": "Mopy"},
+                        {"name": "Tabletki do zmywarki"},
+                        {"name": "Środki czyszczące"},
+                        {"name": "Płyny do płukania"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Dziecko",
+            "subcategories": [
+                {
+                    "name": "Zabawki",
+                    "subcategories": [
+                        {"name": "Klocki LEGO"},
+                        {"name": "Lalki i akcesoria"},
+                        {"name": "Zabawki dla niemowląt"},
+                        {"name": "Zabawki edukacyjne"}
+                    ]
+                },
+                {
+                    "name": "Wózki dziecięce",
+                    "subcategories": [
+                        {"name": "Wózki wielofunkcyjne"},
+                        {"name": "Wózki spacerowe"},
+                        {"name": "Wózki bliźniacze"},
+                        {"name": "Akcesoria do wózka"}
+                    ]
+                },
+                {
+                    "name": "Okazje, przyjęcia",
+                    "subcategories": [
+                        {"name": "Balony"},
+                        {"name": "Przebrania dla dzieci"},
+                        {"name": "Piniaty"},
+                        {"name": "Zaproszenia"}
+                    ]
+                },
+                {
+                    "name": "Artykuły szkolne",
+                    "subcategories": [
+                        {"name": "Plecaki szkolne"},
+                        {"name": "Piórniki"},
+                        {"name": "Plecki przedszkolne"},
+                        {"name": "Zeszyty"}
+                    ]
+                },
+                {
+                    "name": "Zdrowie i higiena",
+                    "subcategories": [
+                        {"name": "Pieluszki i chusteczki"},
+                        {"name": "Artykuły higieniczne"},
+                        {"name": "Wanienki i akcesoria do kąpieli"},
+                        {"name": "Przewijaki"}
+                    ]
+                },
+                {
+                    "name": "Karmienie dziecka",
+                    "subcategories": [
+                        {"name": "Butelki i akcesoria"},
+                        {"name": "Krzesełka do karmienia"},
+                        {"name": "Śliniaki"},
+                        {"name": "Żywność dla dzieci"}
+                    ]
+                },
+                {"name": "Rowery i pojazdy"},
+                {"name": "Odzież dziecięca"},
+                {"name": "Obuwie dla dzieci"},
+                {"name": "Foteliki samochodowe"},
+                {"name": "Pokój dziecięcy"},
+                {"name": "Pościel i kocyki"},
+                {"name": "Meble dziecięce"},
+                {"name": "Zabawki ogrodowe"},
+                {"name": "Akcesoria dla mamy"},
+                {"name": "Wszystko o ciąży"}
+            ]
+        },
+        {
+            "name": "Uroda",
+            "subcategories": [
+                {
+                    "name": "Pielęgnacja",
+                    "subcategories": [
+                        {"name": "Kremy do twarzy"},
+                        {"name": "Balsamy do ciała"},
+                        {"name": "Olejki i sera"},
+                        {"name": "Maski do twarzy"},
+                        {"name": "Peelingi"}
+                    ]
+                },
+                {
+                    "name": "Manicure i pedicure",
+                    "subcategories": [
+                        {"name": "Lakiery hybrydowe"},
+                        {"name": "Zestawy do manicure"},
+                        {"name": "Pilniki i polerki"},
+                        {"name": "Lampy UV"},
+                        {"name": "Ozdoby do paznokci"}
+                    ]
+                },
+                {
+                    "name": "Makijaż",
+                    "subcategories": [
+                        {"name": "Makijaż oczu"},
+                        {"name": "Makijaż twarzy"},
+                        {"name": "Makijaż ust"},
+                        {"name": "Pędzle i akcesoria"},
+                        {"name": "Kosmetyki mineralne"}
+                    ]
+                },
+                {
+                    "name": "Perfumy",
+                    "subcategories": [
+                        {"name": "Zapachy dla kobiet"},
+                        {"name": "Zapachy dla mężczyzn"},
+                        {"name": "Zapachy unisex"},
+                        {"name": "Zestawy perfum"},
+                        {"name": "Testery perfum"}
+                    ]
+                },
+                {
+                    "name": "Wyposażenie salonów",
+                    "subcategories": [
+                        {"name": "Fotele kosmetyczne"},
+                        {"name": "Lampy kosmetyczne"},
+                        {"name": "Sterylizatory"},
+                        {"name": "Organizery na kosmetyki"},
+                        {"name": "Profesjonalne akcesoria"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Kultura i rozrywka",
+            "subcategories": [
+                {
+                    "name": "Książki",
+                    "subcategories": [
+                        {"name": "Biografie"},
+                        {"name": "Fantasy, science fiction, horror"},
+                        {"name": "Kryminał, sensacja, thriller"},
+                        {"name": "Książki dla dzieci"},
+                        {"name": "Komiksy"},
+                        {"name": "Naukowe i popularnonaukowe"},
+                        {"name": "Podręczniki szkolne"},
+                        {"name": "Poradniki i albumy"},
+                        {"name": "Książki obyczajowe"}
+                    ]
+                },
+                {
+                    "name": "Gry",
+                    "subcategories": [
+                        {"name": "Gry na PC"},
+                        {"name": "Gry na konsole"},
+                        {"name": "Gry na PS5"},
+                        {"name": "Gry na Xbox Series X"},
+                        {"name": "Gry na PS4"},
+                        {"name": "Gry na Xbox One"},
+                        {"name": "Gry planszowe"},
+                        {"name": "Gry karciane"},
+                        {"name": "Gry strategiczne"},
+                        {"name": "Przedmioty cyfrowe"}
+                    ]
+                },
+                {
+                    "name": "Instrumenty",
+                    "subcategories": [
+                        {"name": "Gitary i akcesoria"},
+                        {"name": "Instrumenty klawiszowe"},
+                        {"name": "Instrumenty perkusyjne"},
+                        {"name": "Instrumenty dęte"}
+                    ]
+                },
+                {
+                    "name": "Muzyka",
+                    "subcategories": [
+                        {"name": "Płyty CD"},
+                        {"name": "Płyty winylowe"},
+                        {"name": "Rock"},
+                        {"name": "Pop"}
+                    ]
+                },
+                {
+                    "name": "Kody i doładowania",
+                    "subcategories": [
+                        {"name": "Kody do gier"},
+                        {"name": "Muzyka"},
+                        {"name": "Karty podarunkowe"},
+                        {"name": "Płatności internetowe"}
+                    ]
+                },
+                {
+                    "name": "Filmy",
+                    "subcategories": [
+                        {"name": "Filmy na DVD"},
+                        {"name": "Filmy na Blu-ray"},
+                        {"name": "Filmy sensacyjne"},
+                        {"name": "Filmy dla dzieci"}
+                    ]
+                },
+                {
+                    "name": "Gadżety",
+                    "subcategories": [
+                        {"name": "Gadżety filmowe"},
+                        {"name": "Gadżety gamingowe"},
+                        {"name": "Gadżety muzyczne"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Sport i turystyka",
+            "subcategories": [
+                {
+                    "name": "Rowery i akcesoria",
+                    "subcategories": [
+                        {"name": "Rowery"},
+                        {"name": "Części rowerowe"},
+                        {"name": "Kaski"},
+                        {"name": "Odzież rowerowa"}
+                    ]
+                },
+                {"name": "Pojazdy elektryczne"},
+                {
+                    "name": "Wędkarstwo",
+                    "subcategories": [
+                        {"name": "Akcesoria wędkarskie"},
+                        {"name": "Wędki"},
+                        {"name": "Kołowrotki"},
+                        {"name": "Przynęty"}
+                    ]
+                },
+                {
+                    "name": "Turystyka",
+                    "subcategories": [
+                        {"name": "Latarki"},
+                        {"name": "Walizki turystyczne"},
+                        {"name": "Kuchnia turystyczna"},
+                        {"name": "Kubki termiczne"}
+                    ]
+                },
+                {
+                    "name": "Bieganie",
+                    "subcategories": [
+                        {"name": "Odzież do biegania"},
+                        {"name": "Buty do biegania"},
+                        {"name": "Słuchawki do biegania"},
+                        {"name": "Etui i opaski na ramię do biegania"}
+                    ]
+                },
+                {
+                    "name": "Siłownia i fitness",
+                    "subcategories": [
+                        {"name": "Suplementy i odżywki"},
+                        {"name": "Fitness"},
+                        {"name": "Siłownia"},
+                        {"name": "Odżywki białkowe"}
+                    ]
+                },
+                {
+                    "name": "Militaria",
+                    "subcategories": [
+                        {"name": "Wiatrówki"},
+                        {"name": "ASG"},
+                        {"name": "Samoobrona"},
+                        {"name": "Optyka myśliwska"}
+                    ]
+                },
+                {"name": "Skating, slackline"},
+                {"name": "Elektronika sportowa"},
+                {"name": "Sporty walki"},
+                {"name": "Sporty ekstremalne"},
+                {"name": "Sporty wodne"},
+                {"name": "Sporty drużynowe"},
+                {"name": "Sporty towarzyskie"},
+                {"name": "Tenis i pokrewne"},
+                {"name": "Karty sportowe"},
+                {"name": "Odzież turystyczna"}
+            ]
+        },
+        {
+            "name": "Motoryzacja",
+            "subcategories": [
+                {
+                    "name": "Części samochodowe",
+                    "subcategories": [
+                        {"name": "Części karoserii"},
+                        {"name": "Oświetlenie"},
+                        {"name": "Silniki i osprzęt"},
+                        {"name": "Układ elektryczny, zapłon"},
+                        {"name": "Układ hamulcowy"},
+                        {"name": "Układ zawieszenia"},
+                        {"name": "Układ wydechowy"},
+                        {"name": "Układ chłodzenia"},
+                        {"name": "Wyposażenie wnętrza"}
+                    ]
+                },
+                {
+                    "name": "Akcesoria samochodowe",
+                    "subcategories": [
+                        {"name": "Dywaniki"},
+                        {"name": "Żarówki"},
+                        {"name": "Pióra wycieraczek"},
+                        {"name": "Elektronika samochodowa"}
+                    ]
+                },
+                {
+                    "name": "Opony i felgi",
+                    "subcategories": [
+                        {"name": "Opony do aut osobowych"},
+                        {"name": "Koła (opony + felgi)"},
+                        {"name": "Felgi aluminiowe i stalowe"}
+                    ]
+                },
+                {
+                    "name": "Ogłoszenia motoryzacyjne",
+                    "subcategories": [
+                        {"name": "Samochody osobowe"},
+                        {"name": "Motocykle i quady"},
+                        {"name": "Maszyny"},
+                        {"name": "Samochody Dostawcze"},
+                        {"name": "Przyczepy i naczepy"},
+                        {"name": "Inne pojazdy i łodzie"},
+                        {"name": "Samochody ciężarowe"},
+                        {"name": "Usługi motoryzacyjne"}
+                    ]
+                },
+                {
+                    "name": "Warsztat",
+                    "subcategories": [
+                        {"name": "Zestawy narzędzi"},
+                        {"name": "Blacharstwo i lakiernictwo"},
+                        {"name": "Klucze udarowe"},
+                        {"name": "Sprzęt warsztatowy"}
+                    ]
+                },
+                {
+                    "name": "Motocykle i quady",
+                    "subcategories": [
+                        {"name": "Części motocyklowe"},
+                        {"name": "Kaski motocyklowe"},
+                        {"name": "Odzież motocyklowa"},
+                        {"name": "Stelaże motocyklowe"}
+                    ]
+                },
+                {
+                    "name": "Sprawdź",
+                    "subcategories": [
+                        {"name": "Strefa mechanika"},
+                        {"name": "Części ASO"},
+                        {"name": "Opony całoroczne"},
+                        {"name": "Okazje"}
+                    ]
+                },
+                {
+                    "name": "Chemia",
+                    "subcategories": [
+                        {"name": "Oleje silnikowe"},
+                        {"name": "Mycie i pielęgnacja"},
+                        {"name": "Płyny eksploatacyjne"},
+                        {"name": "Chemia blacharsko-lakiernicza"}
+                    ]
+                },
+                {
+                    "name": "Części do maszyn",
+                    "subcategories": [
+                        {"name": "Części do maszyn rolniczych"},
+                        {"name": "Części do maszyn budowlanych"},
+                        {"name": "Części do innych pojazdów"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Nieruchomości",
+            "subcategories": [
+                {
+                    "name": "Na sprzedaż",
+                    "subcategories": [
+                        {"name": "Mieszkania na sprzedaż"},
+                        {"name": "Domy na sprzedaż"},
+                        {"name": "Działki na sprzedaż"},
+                        {"name": "Lokale na sprzedaż"},
+                        {"name": "Magazyny na sprzedaż"},
+                        {"name": "Garaże na sprzedaż"},
+                        {"name": "Zagraniczne na sprzedaż"},
+                        {"name": "Domy modułowe"},
+                        {"name": "Domy z bali"}
+                    ]
+                },
+                {
+                    "name": "Do wynajęcia",
+                    "subcategories": [
+                        {"name": "Mieszkania do wynajęcia"},
+                        {"name": "Domy do wynajęcia"},
+                        {"name": "Działki do wynajęcia"},
+                        {"name": "Lokale do wynajęcia"},
+                        {"name": "Magazyny do wynajęcia"},
+                        {"name": "Garaże do wynajęcia"},
+                        {"name": "Pokoje do wynajęcia"},
+                        {"name": "Zagraniczne do wynajęcia"}
+                    ]
+                },
+                {
+                    "name": "Lokale do wynajęcia",
+                    "subcategories": [
+                        {"name": "Lokale do wynajęcia Warszawa"},
+                        {"name": "Lokale do wynajęcia Wrocław"},
+                        {"name": "Lokale Kraków"},
+                        {"name": "Lokale do wynajęcia Łódź"},
+                        {"name": "Lokale do wynajęcia Białystok"},
+                        {"name": "Lokale do wynajęcia Lublin"},
+                        {"name": "Lokale Kielce"}
+                    ]
+                },
+                {
+                    "name": "Popularne",
+                    "subcategories": [
+                        {"name": "Szeregowce"},
+                        {"name": "Bliźniaki"},
+                        {"name": "Domy wolnostojące"},
+                        {"name": "Pałace i dworki na sprzedaż"},
+                        {"name": "Domki letniskowe"},
+                        {"name": "Domy kanadyjskie"},
+                        {"name": "Gospodarstwo"},
+                        {"name": "Gotowe domy bez działki"}
+                    ]
+                },
+                {
+                    "name": "Popularne na sprzedaż",
+                    "subcategories": [
+                        {"name": "Mieszkania Warszawa"},
+                        {"name": "Mieszkania Kraków"},
+                        {"name": "Mieszkania Wrocław"},
+                        {"name": "Mieszkania na sprzedaż Łódź"},
+                        {"name": "Mieszkania Gdańsk"},
+                        {"name": "Mieszkania na sprzedaż Lublin"},
+                        {"name": "Domy na sprzedaż Kraków"},
+                        {"name": "Działki budowlane"}
+                    ]
+                },
+                {
+                    "name": "Popularne na wynajem",
+                    "subcategories": [
+                        {"name": "Mieszkania Warszawa"},
+                        {"name": "Mieszkania Kraków"},
+                        {"name": "Mieszkania Wrocław"},
+                        {"name": "Mieszkania na sprzedaż Łódź"},
+                        {"name": "Pokoje do wynajęcia Wrocław"},
+                        {"name": "Pokoje do wynajęcia Warszawa"},
+                        {"name": "Pokoje do wynajęcia Poznań"},
+                        {"name": "Pokoje do wynajęcia Kraków"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Kolekcje i sztuka",
+            "subcategories": [
+                {
+                    "name": "Design i antyki",
+                    "subcategories": [
+                        {"name": "Meble"},
+                        {"name": "Porcelana"},
+                        {"name": "Ceramika"},
+                        {"name": "Szkło"},
+                        {"name": "Srebra"},
+                        {"name": "Biżuteria"},
+                        {"name": "Zegary i zegarki"},
+                        {"name": "Zabytki techniki"},
+                        {"name": "Antykwariat"}
+                    ]
+                },
+                {
+                    "name": "Kolekcje",
+                    "subcategories": [
+                        {"name": "Numizmatyka"},
+                        {"name": "Filatelistyka"},
+                        {"name": "Militaria kolekcjonerskie"},
+                        {"name": "Modelarstwo"},
+                        {"name": "Poszukiwania"},
+                        {"name": "Pamiątki PRL-u"},
+                        {"name": "Pieniądz papierowy"},
+                        {"name": "Akcesoria alkoholowe"},
+                        {"name": "Flagi i symbole narodowe"},
+                        {"name": "Kolekcje sportowe"}
+                    ]
+                },
+                {
+                    "name": "Hobby i rękodzieło",
+                    "subcategories": [
+                        {"name": "Akcesoria plastyczne"},
+                        {"name": "Biżuteria - półprodukty"},
+                        {"name": "Szycie"},
+                        {"name": "Dziewiarstwo"},
+                        {"name": "Decoupage"},
+                        {"name": "Scrapbooking"},
+                        {"name": "Świece"},
+                        {"name": "Kartki i zaproszenia"}
+                    ]
+                },
+                {
+                    "name": "Produkty inwestycyjne",
+                    "subcategories": [
+                        {"name": "Złoto"},
+                        {"name": "Srebro"},
+                        {"name": "Platyna"}
+                    ]
+                },
+                {
+                    "name": "Sztuka",
+                    "subcategories": [
+                        {"name": "Malarstwo"},
+                        {"name": "Rzeźba"},
+                        {"name": "Grafika"},
+                        {"name": "Fotografia"},
+                        {"name": "Plakat"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Firma i usługi",
+            "subcategories": [
+                {
+                    "name": "Biuro i reklama",
+                    "subcategories": [
+                        {"name": "Meble biurowe"},
+                        {"name": "Niszczarki"},
+                        {"name": "Laminatory i akcesoria"},
+                        {"name": "Sejfy i kasy pancerne"},
+                        {"name": "Papier biurowy"},
+                        {"name": "Pudełka i kartony"},
+                        {"name": "Taśmy pakowe"},
+                        {"name": "Folia bąbelkowa"},
+                        {"name": "Koperty"},
+                        {"name": "Akcydensy"},
+                        {"name": "Reklama zewnętrzna"},
+                        {"name": "Gadżety firmowe"},
+                        {"name": "Fotele biurowe"},
+                        {"name": "Biurka"},
+                        {"name": "Krzesła biurowe"},
+                        {"name": "Tablice magnetyczne"},
+                        {"name": "Szafy biurowe"},
+                        {"name": "Artykuły piśmiennicze"}
+                    ]
+                },
+                {
+                    "name": "Przemysł",
+                    "subcategories": [
+                        {"name": "Maszyny i urządzenia"},
+                        {"name": "Regały magazynowe"},
+                        {"name": "Budownictwo"},
+                        {"name": "Spawalnictwo"},
+                        {"name": "Odzież robocza i BHP"},
+                        {"name": "Impregnaty"},
+                        {"name": "Materiały i akcesoria"},
+                        {"name": "Oferty hurtowe"},
+                        {"name": "Farby"},
+                        {"name": "Wagi sklepowe"},
+                        {"name": "Urządzenia i akcesoria do pakowania"},
+                        {"name": "Wózki paletowe"},
+                        {"name": "Koszyki i wózki"},
+                        {"name": "Gastronomia"},
+                        {"name": "Magnesy neodymowe"},
+                        {"name": "Recykling i wywóz śmieci"},
+                        {"name": "Piły i przecinarki"},
+                        {"name": "Łuparki"}
+                    ]
+                },
+                {
+                    "name": "Ogłoszenia",
+                    "subcategories": [
+                        {"name": "Usługi dla firm"},
+                        {"name": "Usługi remontowe i budowlane"},
+                        {"name": "Zwierzęta"},
+                        {"name": "Usługi motoryzacyjne"},
+                        {"name": "Serwis sprzętu elektronicznego"}
+                    ]
+                }
+            ]
+        }
+    ]
+}
