@@ -1,0 +1,12 @@
+.category_block{
+    /* width: 10rem;
+    height: 10rem; */
+
+    height: fit-content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+}
