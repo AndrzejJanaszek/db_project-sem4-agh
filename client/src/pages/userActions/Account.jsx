@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Register = () => {
+const Account = () => {
     return (
         <div>
-            Rejestracja
+            
         </div>
     );
 }
 
-export default Register;
+export default Account;
