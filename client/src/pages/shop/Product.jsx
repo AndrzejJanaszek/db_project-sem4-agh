@@ -45,7 +45,7 @@ const Product = () => {
                 <div className={styles.summaryVariant}>
                     <label htmlFor="">Ram</label>
                     <div className={styles.summaryVariantList}>
-                        <div className={styles.summaryVariantListItem}>16 GB</div>
+                        <div className={`${styles.summaryVariantListItem} ${styles.summaryVariantListItemActive}`}>16 GB</div>
                         <div className={styles.summaryVariantListItem}>32 GB</div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ const Product = () => {
                 <div className={styles.summaryVariant}>
                     <label htmlFor="">System operacyjny</label>
                     <div className={styles.summaryVariantList}>
-                        <div className={styles.summaryVariantListItem}>Windows 11</div>
+                        <div className={`${styles.summaryVariantListItem} ${styles.summaryVariantListItemActive}`}>Windows 11</div>
                         <div className={styles.summaryVariantListItem}>Bez systemu</div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ const Product = () => {
                 <div className={styles.summaryVariant}>
                     <label htmlFor="">Pojemność dysku</label>
                     <div className={styles.summaryVariantList}>
-                        <div className={styles.summaryVariantListItem}>256 GB</div>
+                        <div className={`${styles.summaryVariantListItem} ${styles.summaryVariantListItemActive}`}>256 GB</div>
                         <div className={styles.summaryVariantListItem}>512 GB</div>
                         <div className={styles.summaryVariantListItem}>1 TB</div>
                     </div>

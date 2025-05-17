@@ -36,3 +36,19 @@ h3{
 p{
   font-size: inherit;
 }
+
+
+
+button{
+    padding: 1.25rem;
+    background-color: #7AAD5F;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.15ch;
+
+    transition: background-color .3s;
+}
+button:hover{
+    background-color: #3a6e1f;
+}
