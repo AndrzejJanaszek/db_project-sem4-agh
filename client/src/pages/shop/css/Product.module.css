@@ -1,0 +1,114 @@
+.container {
+    max-width: 130rem;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    gap: 2rem;
+
+    padding: 1.5rem;
+}
+
+.productSection{
+    box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+}
+
+.productMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 3rem;
+}
+
+.gallery {
+    display: grid;
+    place-items: center;
+}
+
+.galleryMainImg {
+    width: 80%;
+}
+
+.galleryBar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+
+    width: 100%;
+    height: 8rem;
+
+    background-color: #c4c4c4;
+}
+
+.galleryBarItem {
+    height: 100%;
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    width: 100%;
+}
+.paramsTable{
+    width: 100%;
+}
+.paramsTable td{
+    padding: 1rem;
+}
+.paramsTable tr:nth-child(2n+1){
+    background-color: #cccccc;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    height: fit-content;
+}
+.summaryHeaders{
+    display: flex;
+    flex-direction: column;
+}
+.summaryVariantsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.summaryVariant {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding-left: 1rem;
+}
+.summaryVariant > label {
+   font-size: 1.8rem;
+   font-weight: 600;
+}
+.summaryVariantList {
+    display: flex;
+    gap: 1rem;
+}
+
+.summaryVariantListItem {
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+button{
+    padding: 1.25rem;
+    background-color: #7AAD5F;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.15ch;
+}

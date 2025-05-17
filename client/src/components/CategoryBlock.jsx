@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import "./css/CategoryBlock.css"
+import styles from "./css/CategoryBlock.module.css"
 
 const CategoryBlock = ({category}) => {
     const [className, setClassName] = useState("nazwa")
@@ -10,7 +10,7 @@ const CategoryBlock = ({category}) => {
     })
 
     return (
-        <div className='category_block'>
+        <div className={styles.categoryBlock}>
             <p>{className}</p>
         </div>
     );

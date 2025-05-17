@@ -1,8 +1,6 @@
-.category_block{
-    /* width: 10rem;
-    height: 10rem; */
-
-    height: fit-content;
+.categoryBlock{
+    width: 25rem;
+    height: 25rem;
 
     display: flex;
     justify-content: center;

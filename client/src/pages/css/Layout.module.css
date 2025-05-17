@@ -1,0 +1,57 @@
+.navigation{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+    background-color: #7f7f7f;
+    height: var(--nav-height);
+    text-align: center;
+    color: #fff;
+
+    font-size: 1.6rem;
+}
+
+.logoHeader{
+    display: flex;
+    align-self: center;
+}
+
+.navigation > ul{
+    position: absolute;
+
+    height: 100%;
+
+    right: 2rem;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+
+    list-style-type: none;
+}
+
+.navElement{
+    padding: 1rem;
+}
+
+.main{
+    width: 100vw;
+    height: fit-content;
+    min-height: var(--min-main-height);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.footer{
+    background-color: #232323;
+    color: #eee;
+
+    height: var(--footer-height);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

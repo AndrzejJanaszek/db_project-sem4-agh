@@ -3,7 +3,14 @@
     margin: 0;
     padding: 0;
 }
+:root{
+  font-size:62.5%;
+}
 a{
   text-decoration: none;
   color: inherit;
+}
+
+table, tr, td {
+    border-collapse: collapse;
 }
