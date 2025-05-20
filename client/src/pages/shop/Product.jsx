@@ -68,7 +68,7 @@ const Product = () => {
                 </div>
             </div>
 
-            <button>Dodaj do koszyka</button>
+            <button className="btnGreen">Dodaj do koszyka</button>
         </section>
     </div>
 );

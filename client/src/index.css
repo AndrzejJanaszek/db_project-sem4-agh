@@ -39,7 +39,7 @@ p{
 
 
 
-button{
+button.btnGreen{
     padding: 1.25rem;
     background-color: #7AAD5F;
     border: none;
@@ -49,6 +49,34 @@ button{
 
     transition: background-color .3s;
 }
-button:hover{
+button.btnGreen:hover{
     background-color: #3a6e1f;
+}
+
+button.btnRed{
+    padding: 1.25rem;
+    background-color: #da7b61;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.15ch;
+
+    transition: background-color .3s;
+}
+button.btnRed:hover{
+    background-color: #c05436;
+}
+
+button.btnBlue{
+    padding: 1.25rem;
+    background-color: #53b5c9;
+    border: none;
+    color: #000;
+    font-weight: 600;
+    letter-spacing: 0.15ch;
+
+    transition: background-color .3s;
+}
+button.btnBlue:hover{
+    background-color: #2f9fb6;
 }

@@ -41,7 +41,7 @@ const RegisterUser = () => {
           <input type="password" />
         </label>
 
-        <button>Zarejestruj</button>
+        <button className='btnGreen'>Zarejestruj</button>
       </form>
     </div>
   );

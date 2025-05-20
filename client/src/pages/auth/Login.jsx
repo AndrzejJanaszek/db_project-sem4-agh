@@ -1,10 +1,13 @@
 import React from 'react';
 
+import style from './css/login.module.css'
+
 const Login = () => {
     return (
-        <div>
-            <form action="">
-                <label htmlFor="">
+
+        <div className={style.loginContainer}>
+            <form action="" className={style.loginForm}>
+                <label htmlFor="" className={style.loginFormLabel}>
                     <p>email</p>
                     <input type="text" />
                 </label>
@@ -12,7 +15,7 @@ const Login = () => {
                     <p>Hasło</p>
                     <input type="text" />
                 </label>
-                <button>Zaloguj</button>
+                <button className='btnGreen'>Zaloguj</button>
             </form>
         </div>
     );
