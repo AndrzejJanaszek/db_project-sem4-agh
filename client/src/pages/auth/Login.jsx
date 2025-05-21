@@ -11,9 +11,9 @@ const Login = () => {
                     <p>email</p>
                     <input type="text" />
                 </label>
-                <label htmlFor="">
-                    <p>Hasło</p>
-                    <input type="text" />
+                <label htmlFor="" className={style.loginFormLabel}>
+                    <p>hasło</p>
+                    <input type="password" />
                 </label>
                 <button className='btnGreen'>Zaloguj</button>
             </form>

@@ -2,6 +2,8 @@
     max-width: 130rem;
     height: 100%;
 
+    margin: 0 auto;
+
     display: grid;
     grid-template-columns: 1.618fr 1fr;
     gap: 2rem;
@@ -41,7 +43,7 @@
     width: 100%;
     height: 8rem;
 
-    background-color: #c4c4c4;
+    background-color: var(--green-light);
 }
 
 .galleryBarItem {
@@ -64,7 +66,7 @@
     padding: 1rem;
 }
 .paramsTable tr:nth-child(2n+1){
-    background-color: #cccccc;
+    background-color: var(--green-light);
 }
 
 .summary {
@@ -106,5 +108,5 @@
     place-items: center;
 }
 .summaryVariantListItemActive{
-    border: 3px solid #3a6e1f;
+    border: 3px solid var(--green-dark);
 }

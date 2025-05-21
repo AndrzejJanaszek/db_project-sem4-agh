@@ -2,6 +2,14 @@
     --nav-height: 7rem;
     --footer-height: 3rem;
     --min-main-height: calc(100vh - var(--nav-height) - var(--footer-height));
+
+    --green-dark: #3a6e1f;
+    --green-normal: #7AAD5F;
+    --green-light: #DFEBD9;
+
+    --blue-dark: #2D5FA6;
+    --blue-normal: #90B8EF;
+    --blue-light: #aecaf2;
 }
 
 body {
@@ -27,10 +35,10 @@ h1{
   font-size: 2.4rem;
 }
 h2{
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 h3{
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 p{
@@ -41,16 +49,18 @@ p{
 
 button.btnGreen{
     padding: 1.25rem;
-    background-color: #7AAD5F;
+    background-color: var(--green-normal);
     border: none;
     color: #fff;
     font-weight: 600;
     letter-spacing: 0.15ch;
 
+    box-shadow: .2rem .2rem .5rem rgba(0, 0, 0, 0.3);
+
     transition: background-color .3s;
 }
 button.btnGreen:hover{
-    background-color: #3a6e1f;
+    background-color: var(--green-dark);
 }
 
 button.btnRed{
@@ -60,6 +70,8 @@ button.btnRed{
     color: #fff;
     font-weight: 600;
     letter-spacing: 0.15ch;
+
+    box-shadow: .2rem .2rem .5rem rgba(0, 0, 0, 0.3);
 
     transition: background-color .3s;
 }
@@ -74,6 +86,8 @@ button.btnBlue{
     color: #000;
     font-weight: 600;
     letter-spacing: 0.15ch;
+
+    box-shadow: .2rem .2rem .5rem rgba(0, 0, 0, 0.3);
 
     transition: background-color .3s;
 }

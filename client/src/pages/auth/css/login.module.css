@@ -1,24 +1,93 @@
 .loginContainer{
     /* place-self: center; */
-    height: 100%;
+    height: var(--min-main-height);
+
+    display: grid;
+    place-items: center;
 }
 .loginForm{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 
-    padding: 2rem;
+    padding: 4rem;
 
-    box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0.5rem 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
 }
+
+.loginForm button{
+    margin-top: 1rem;
+}
+
 .loginFormLabel{
 
 }
 
 .loginFormLabel p{
+    text-transform: capitalize;
+    line-height: 200%;
 
+    /* font-size: 1.4rem; */
 }
 
 .loginFormLabel input{
+    padding: 0.75rem;
+    border: 2px solid rgb(93, 93, 93);
+}
 
+.loginFormLabel input:focus{
+    border-color: var(--green-normal);
+
+    outline: none;
+}
+
+
+/* ------------------------------ */
+
+.registerSideDivider{
+    display: flex;
+
+    gap: 3rem;
+}
+
+.registerSideDivider > section{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* --------------------------------- */
+.registerTileConainer{
+    height: var(--min-main-height);
+
+    display: flex;
+    gap: 4rem;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.registerTile{
+    display: flex;
+    flex-direction: column;
+
+    padding: 6rem 3rem;
+    box-shadow: .5rem .5rem 1.2rem rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+}
+
+.registerTile p{
+    color: var(--green-dark);
+    font-size: 110%;
+}
+
+.registerTile:hover{
+    filter: brightness(0.9);
+}
+
+.registerBack{
+    text-align: center;
+    color: var(--blue-dark);
+    font-weight: 500;
 }

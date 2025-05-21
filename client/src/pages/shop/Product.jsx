@@ -31,7 +31,7 @@ const Product = () => {
                 <table className={styles.paramsTable}>
                     {params_html}
                 </table>
-                <button>Wszystkie parametry</button>
+                <button className='btnGreen'>Wszystkie parametry</button>
             </section>
         </section>
         <section className={`${styles.summary} ${styles.productSection}`}>
