@@ -21,10 +21,8 @@ docker logs mysql-db
 
 ```
 docker compose down -v
-
 ```
 
 ```
 docker volume rm projekt_mysql-data
-
 ```
