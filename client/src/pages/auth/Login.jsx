@@ -6,16 +6,16 @@ const Login = () => {
     return (
 
         <div className={style.loginContainer}>
-            <form action="" className={style.loginForm}>
-                <label htmlFor="" className={style.loginFormLabel}>
+            <form action="" method='post' className={style.loginForm}>
+                <label htmlFor="email" className={style.loginFormLabel}>
                     <p>email</p>
-                    <input type="text" />
+                    <input type="text" name='email'/>
                 </label>
-                <label htmlFor="" className={style.loginFormLabel}>
+                <label htmlFor="password" className={style.loginFormLabel}>
                     <p>hasło</p>
-                    <input type="password" />
+                    <input type="password" name='password'/>
                 </label>
-                <button className='btnGreen'>Zaloguj</button>
+                <button className='btnGreen' type='submit'>Zaloguj</button>
             </form>
         </div>
     );
