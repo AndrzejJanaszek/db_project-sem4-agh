@@ -1,6 +1,6 @@
 services:
   react-app:
-    container_name: front-react
+    container_name: front_container
     build:
       context: ./client/
       dockerfile: Dockerfile
@@ -15,7 +15,7 @@ services:
 
   mysql:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: mysql_container
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -28,7 +28,7 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - mysql-data:/var/lib/mysql
   server:
-    container_name: backend-node
+    container_name: backend_container
     build:
       context: ./server
       dockerfile: Dockerfile
