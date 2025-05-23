@@ -26,3 +26,9 @@ docker compose down -v
 ```
 docker volume rm projekt_mysql-data
 ```
+
+# REBUILD JEDNEGO KONTENERA
+
+```
+docker compose build <nazwa_serwisu>
+```
