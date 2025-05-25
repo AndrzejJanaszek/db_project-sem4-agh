@@ -15,6 +15,7 @@ import RegisterUser from "./pages/auth/RegisterUser";
 import RegisterCompany from "./pages/auth/RegisterCompany";
 import Product from "./pages/shop/Product";
 import Cart from "./pages/userActions/Cart";
+import AddProduct from "./pages/userActions/AddProduct";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
 
           <Route path="product" element={<Product />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="add-product" element={<AddProduct/>} />
 
           <Route path="register" >
             <Route index element={<Register />} />
