@@ -27,6 +27,7 @@ services:
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
       - mysql-data:/var/lib/mysql
+  
   server:
     container_name: backend_container
     build:
@@ -39,11 +40,23 @@ services:
       - /app/node_modules
     depends_on:
       - mysql
+      - mongo
     environment:
       - NODE_ENV=development
       - DB_HOST=mysql
       - DB_USER=user
       - DB_PASSWORD=password
       - DB_NAME=db_projekt-sem4-agh
+      - MONGODB_URI=mongodb://mongo:27017/my_database_name
+
+  mongo:
+    image: mongo
+    container_name: mongodb_container
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 volumes:
   mysql-data:
+  mongo-data:
