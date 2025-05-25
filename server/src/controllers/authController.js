@@ -1,5 +1,6 @@
 const { validationResult } = require("express-validator");
-const authServices = require("../services/authServices");
+const userServices = require("../services/userServices");
+const companyServices = require("../services/companyServices");
 const bcrypt = require('bcrypt');
 
 exports.registerUser = async (req, res) => {
@@ -12,12 +13,11 @@ exports.registerUser = async (req, res) => {
     const user = { name, surname, email, password, city, street, postcode };
 
     try {
-      // sprawdzenie zajętości emaila
-      if (await authServices.getUserByEmail(user.email) !== undefined) {
+      if (await userServices.getUserByEmail(user.email) !== undefined) {
         return res.status(400).json({ error: "Email jest już zajęty" });
       }
   
-      await authServices.createUser(user);
+      await userServices.createUser(user);
       res.status(201).json({ message: "Użytkownik zarejestrowany" });
     } catch (err) {
       console.error(err);
@@ -35,11 +35,11 @@ exports.registerCompany = async (req, res) => {
     const company = { companyName, nip, email, password, city, street, postcode };
 
     try {
-      if (await authServices.getCompanyByEmail(company.email) !== undefined) {
+      if (await companyServices.getCompanyByEmail(company.email) !== undefined) {
         return res.status(400).json({ error: "Email jest już zajęty" });
       }
   
-      await authServices.createCompany(company);
+      await companyServices.createCompany(company);
   
       res.status(201).json({ message: "Firma zarejestrowana" });
     } catch (err) {
@@ -57,20 +57,17 @@ exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Sprawdzenie czy user istnieje
-    const user = await authServices.getUserByEmail(email)
+    const user = await userServices.getUserByEmail(email)
     if ( user === undefined) {
       return res.status(401).json({ error: "Nieprawidłowy email lub hasło" });
     }
 
-    // Porównanie haseł
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
       return res.status(401).json({ error: "Nieprawidłowy email lub hasło" });
     }
 
-    // Wygenerowanie tokena JWT
-    const token = await authServices.generateUserJWT(user);
+    const token = await userServices.generateUserJWT(user);
 
     res.json({ token });
   } catch (err) {
@@ -88,22 +85,17 @@ exports.loginCompany = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Sprawdzenie czy company istnieje
-    const company = await authServices.getCompanyByEmail(email)
+    const company = await companyServices.getCompanyByEmail(email)
     if ( company === undefined) {
       return res.status(401).json({ error: "Nieprawidłowy email lub hasło" });
     }
-
-    // Porównanie haseł
-    console.log(company);
     
     const match = await bcrypt.compare(password, company.password);
     if (!match) {
       return res.status(401).json({ error: "Nieprawidłowy email lub hasło" });
     }
 
-    // Wygenerowanie tokena JWT
-    const token = await authServices.generateCompanyJWT(company);
+    const token = await companyServices.generateCompanyJWT(company);
 
     res.json({ token });
   } catch (err) {

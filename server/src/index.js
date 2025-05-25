@@ -11,19 +11,15 @@ const startServer = async () => {
 
     const app = express();
 
-    // Middleware
     app.use(cors());
     app.use(express.json());
 
-    // Routes
     app.use("/api", authRoutes);
 
-    // Healthcheck
     app.get("/", (req, res) => {
       res.send("API is running");
     });
 
-    // Start server
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);
@@ -31,7 +27,7 @@ const startServer = async () => {
 
   } catch (err) {
     console.error("Błąd startu serwera:", err);
-    process.exit(1); // zakończ jeśli nie uda się połączyć z Mongo
+    process.exit(1);
   }
 };
 

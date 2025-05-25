@@ -3,8 +3,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 exports.getUserByEmail = async (email) => {
-    console.log(db);
-    
     const [existingUsers] = await db.query(
         "SELECT * FROM users WHERE email = ?",
         [email]
@@ -13,18 +11,16 @@ exports.getUserByEmail = async (email) => {
     return existingUsers[0];
 };
 
-exports.getCompanyByEmail = async (email) => {
+exports.getUserById = async (id) => {
     const [existingUsers] = await db.query(
-        "SELECT * FROM companies WHERE email = ?",
-        [email]
+        "SELECT * FROM users WHERE id = ?",
+        [id]
     );
 
     return existingUsers[0];
 };
 
 exports.createUser = async (user) => {
-    // zwraca id dodanego usera
-
     const hashedPassword = await bcrypt.hash(user.password, 10);
 
     const [addressResult] = await db.query(
@@ -39,24 +35,6 @@ exports.createUser = async (user) => {
     );
 
     return userResult.insertId;
-};
-
-exports.createCompany = async (company) => {
-    // zwraca id dodanego usera
-    const hashedPassword = await bcrypt.hash(company.password, 10);
-
-    const [addressResult] = await db.query(
-        "INSERT INTO address (city, postcode, street) VALUES (?, ?, ?)",
-        [company.city, company.postcode, company.street]
-    );
-    const addressId = addressResult.insertId;
-
-    const [companyResult] = await db.query(
-        "INSERT INTO `companies` (`name`, `nip`, `email`, `password`, `address_id`) VALUES (?, ?, ?, ?, ?)",
-        [company.companyName, company.nip, company.email, hashedPassword, addressId]
-    );
-
-    return companyResult.insertId;
 };
 
 exports.generateUserJWT = async (user) => {
@@ -74,16 +52,40 @@ exports.generateUserJWT = async (user) => {
     return token;
 }
 
-exports.generateCompanyJWT = async (company) => {
-    const token = jwt.sign(
-      {
-        id: company.id,
-        email: company.email,
-        companyName: company.companyName,
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+exports.deleteUser = async (id) => {
+    const [result] = await db.query(
+        "DELETE FROM users WHERE id = ?",
+        [id]
+    );
+    return result.affectedRows > 0;
+};
+
+exports.updateUser = async (id, { name, surname, email, city, postcode, street }) => {
+    const [users] = await db.query("SELECT address_id FROM users WHERE id = ?", [id]);
+    
+    if (users.length === 0) {
+        throw new Error("User not found");
+    }
+
+    const addressId = users[0].address_id;
+
+    await db.query(
+        "UPDATE users SET name = ?, surname = ?, email = ? WHERE id = ?",
+        [name, surname, email, id]
     );
 
-    return token;
-}
+    await db.query(
+        "UPDATE address SET city = ?, postcode = ?, street = ? WHERE id = ?",
+        [city, postcode, street, addressId]
+    );
+
+    return true;
+};
+
+exports.updateUserPassword = async (id, hashedPassword) => {
+    await db.query(
+        "UPDATE users SET password = ? WHERE id = ?",
+        [hashedPassword, id]
+    );
+    return true;
+};

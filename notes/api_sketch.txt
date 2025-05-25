@@ -1,0 +1,31 @@
+### MYSQL
+
+USER:
+- create
+- get - read
+- modify - update
+- delete
+
+COMPANY:
+- create
+- get - read
+- modify - update
+- delete
+
+CART ACTIONS:
+- add product (count)
+- change product count
+- delete produkt
+
+PORDUCT REVIEW:
+- CRUD
+
+TRANSACTION
+- make
+- get
+
+### MONGO_DB
+
+PRODUCT:
+- CRUD
+- filter (get filtred list)
