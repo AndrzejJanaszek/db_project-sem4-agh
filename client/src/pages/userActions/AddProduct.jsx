@@ -6,7 +6,10 @@ const AddProduct = () => {
         <div className={styles.pageContainer}>
             <section className={styles.variantBar}>
                 <div className={styles.variantBarHeader}>
-                    <h3>Warianty</h3>
+                    <div>
+                        <h2>Warianty dla</h2>
+                        <h3>{"Nazwa produtku"}</h3>
+                    </div>
                     <button type="button" className="btnBlue">+</button>
                 </div>
                 <div className={styles.variantBarList}>
@@ -35,8 +38,12 @@ const AddProduct = () => {
             <section className={styles.formContainer}>
                 <form action="" method='post' className={styles.form}>
                     <label htmlFor="">
-                        <p>Nazwa</p>
-                        <input type="text" name='name' />
+                        <p>Nazwa Produktu</p>
+                        <input type="text" name='nameProduct' />
+                    </label>
+                    <label htmlFor="">
+                        <p>Nazwa Wariantu</p>
+                        <input type="text" name='nameVariant' />
                     </label>
                     <div className={styles.formPriceBox}>
                         <label htmlFor="">

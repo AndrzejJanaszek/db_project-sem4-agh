@@ -1,0 +1,40 @@
+.item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    
+    /* width: 16rem; */
+    padding: 2rem 1rem;
+}
+
+.item > img{
+    width: 10rem;
+    height: 10rem;
+
+    background-color: #fff;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+
+    object-fit: contain;
+}
+
+.itemName{
+    font-size: 1.4rem;
+}
+
+.itemPrice{
+    display: flex;
+    gap: 0.8ch;
+}
+
+.itemPriceBox_value{
+
+}
+
+.itemPriceBox_currency{
+    
+}
+
+.itemDescription{
+    text-align: justify;
+}
