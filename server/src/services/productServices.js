@@ -61,3 +61,68 @@ exports.deleteVariant = async (productId, variantId) => {
   );
   return updated;
 };
+
+exports.getFilteredProducts = async (filters) => {
+  const pipeline = [];
+
+  pipeline.push({ $unwind: "$variants" });
+
+  if (filters.name) {
+    pipeline.push({
+      $match: {
+        name: { $regex: filters.name, $options: "i" }
+      }
+    });
+  }
+
+  if (filters.categoryId) {
+    pipeline.push({
+      $match: {
+        categoryId: filters.categoryId
+      }
+    });
+  }
+  if (filters.subcategoryId) {
+    pipeline.push({
+      $match: {
+        subcategoryId: filters.subcategoryId
+      }
+    });
+  }
+  if (filters.subsubcategoryId) {
+    pipeline.push({
+      $match: {
+        subsubcategoryId: filters.subsubcategoryId
+      }
+    });
+  }
+
+console.log(filters);
+
+
+  const priceFilter = {};
+  if (filters.minPrice !== undefined) priceFilter.$gte = Number(filters.minPrice) ;
+  if (filters.maxPrice !== undefined) priceFilter.$lte = Number(filters.maxPrice);
+
+  if (Object.keys(priceFilter).length > 0) {
+    pipeline.push({
+      $match: {
+        "variants.price": priceFilter
+      }
+    });
+  }
+
+  pipeline.push({
+    $group: {
+      _id: "$_id",
+      name: { $first: "$name" },
+      categoryId: { $first: "$categoryId" },
+      subcategoryId: { $first: "$subcategoryId" },
+      subsubcategoryId: { $first: "$subsubcategoryId" },
+      variants: { $push: "$variants" }
+    }
+  });
+
+  const results = await Product.aggregate(pipeline);
+  return results;
+};

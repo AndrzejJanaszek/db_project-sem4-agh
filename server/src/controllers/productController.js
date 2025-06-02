@@ -62,4 +62,13 @@ exports.deleteVariant = async (req, res) => {
   }
 };
 
+exports.getProducts = async (req, res) => {
+  try {
+    const filters = req.query;
+    const products = await productServices.getFilteredProducts(filters);
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
