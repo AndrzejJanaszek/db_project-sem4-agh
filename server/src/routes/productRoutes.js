@@ -10,6 +10,7 @@ router.delete("/:id/variant/:variantId", productController.deleteVariant);
 
 router.put("/:id/variant/:variantId", productController.updateVariant);
 router.put("/:id/name", productController.updateProductName);
+router.put("/:id/category", productController.updateProductCategory);
 
 router.get("/", productController.getProducts);
 

@@ -14,6 +14,31 @@ exports.updateProductName = async (productId, newName) => {
   return updatedProduct;
 };
 
+exports.updateProductCategory = async (productId, categoryId, subCategoryId, subSubCategoryId) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      productId,
+      {
+        categoryId,
+        subCategoryId,
+        subSubCategoryId,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!updatedProduct) {
+      throw new Error("Produkt nie został znaleziony");
+    }
+
+    return updatedProduct;
+  } catch (err) {
+    throw new Error("Błąd przy aktualizacji kategorii produktu: " + err.message);
+  }
+};
+
 exports.deleteProduct = async (productId) => {
   const deleted = await Product.findByIdAndDelete(productId);
   return deleted; // null jeśli nie znaleziono
@@ -82,23 +107,20 @@ exports.getFilteredProducts = async (filters) => {
       }
     });
   }
-  if (filters.subcategoryId) {
+  if (filters.subCategoryId) {
     pipeline.push({
       $match: {
-        subcategoryId: filters.subcategoryId
+        subCategoryId: filters.subCategoryId
       }
     });
   }
-  if (filters.subsubcategoryId) {
+  if (filters.subSubCategoryId) {
     pipeline.push({
       $match: {
-        subsubcategoryId: filters.subsubcategoryId
+        subSubCategoryId: filters.subSubCategoryId
       }
     });
   }
-
-console.log(filters);
-
 
   const priceFilter = {};
   if (filters.minPrice !== undefined) priceFilter.$gte = Number(filters.minPrice) ;
@@ -117,8 +139,8 @@ console.log(filters);
       _id: "$_id",
       name: { $first: "$name" },
       categoryId: { $first: "$categoryId" },
-      subcategoryId: { $first: "$subcategoryId" },
-      subsubcategoryId: { $first: "$subsubcategoryId" },
+      subCategoryId: { $first: "$subCategoryId" },
+      subSubCategoryId: { $first: "$subSubCategoryId" },
       variants: { $push: "$variants" }
     }
   });

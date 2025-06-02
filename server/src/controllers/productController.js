@@ -20,6 +20,24 @@ exports.updateProductName = async (req, res) => {
   }
 };
 
+exports.updateProductCategory = async (req, res) => {
+  const { categoryId, subCategoryId, subSubCategoryId } = req.body;
+  const { id: productId } = req.params;
+
+  try {
+    const updatedProduct = await productServices.updateProductCategory(
+      productId,
+      categoryId,
+      subCategoryId,
+      subSubCategoryId
+    );
+
+    res.status(200).json(updatedProduct);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
