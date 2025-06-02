@@ -60,7 +60,7 @@ exports.validateCompany = [
 body("companyName")
   .notEmpty()
   .withMessage("Nazwa firmy jest wymagana")
-  .matches(/^[\w\s\-\&\.]+$/i)
+  .matches(/^[\w\s&.-]+$/i)
   .withMessage("Nazwa firmy może zawierać tylko litery, cyfry, spacje, myślniki, & i kropki"),
 
 body("nip")
