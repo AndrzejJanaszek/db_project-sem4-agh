@@ -6,6 +6,7 @@ const { connectMongo } = require("./db/mongo");
 const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 const startServer = async () => {
   try {
@@ -21,6 +22,8 @@ const startServer = async () => {
     app.use("/api/products", productRoutes);
 
     app.use("/api/categories", categoryRoutes);
+
+    app.use("/api/cart", cartRoutes);
 
     app.get("/", (req, res) => {
       res.send("API is running");
