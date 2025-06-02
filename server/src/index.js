@@ -7,6 +7,8 @@ const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
+const transactionRoutes = require("./routes/transactionRoutes");
 
 const startServer = async () => {
   try {
@@ -24,6 +26,10 @@ const startServer = async () => {
     app.use("/api/categories", categoryRoutes);
 
     app.use("/api/cart", cartRoutes);
+
+    app.use("/api/reviews", reviewRoutes);
+
+    app.use("/api/transactions", transactionRoutes);
 
     app.get("/", (req, res) => {
       res.send("API is running");
