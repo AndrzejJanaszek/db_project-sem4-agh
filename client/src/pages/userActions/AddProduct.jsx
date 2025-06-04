@@ -37,54 +37,65 @@ const AddProduct = () => {
             </section>
             <section className={styles.formContainer}>
                 <form action="" method='post' className={styles.form}>
-                    <label htmlFor="">
-                        <p>Nazwa Produktu</p>
-                        <input type="text" name='nameProduct' />
-                    </label>
-                    <label htmlFor="">
-                        <p>Nazwa Wariantu</p>
-                        <input type="text" name='nameVariant' />
-                    </label>
-                    <div className={styles.formPriceBox}>
-                        <label htmlFor="">
-                            <p>Cena</p>
-                            <input type="text" name='price' />
-                        </label>
-                        <label htmlFor="">
-                            <p>Ilość</p>
-                            <input type="text" name='amount' />
-                        </label>
-                    </div>
-                    <table className={styles.formParametersTable}>
-                        <tr>
-                            <th colSpan={2}>Parametry</th>
-                        </tr>
-                        <tr>
-                            <th>Parametr</th>
-                            <th>Wartość</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" name='paramName_1' value='RAM' />
-                            </td>
-                            <td>
-                                <input type="text" name='paramValue_1' convaluetent='16 GB' />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" name='paramName_2' value='Pojemność dysku' />
-                            </td>
-                            <td>
-                                <input type="text" name='paramValue_2' value='512 GB' />
-                            </td>
-                        </tr>
-                    </table>
-                    <button type="button" className='btnBlue'>Dodaj parametr</button>
                     <section>
-                        <div className='imgList'>
-                            <div className='imgContainer'>
-                                <img src="" alt="" />
+                        <label htmlFor="">
+                            <p>Nazwa Produktu</p>
+                            <input type="text" name='nameProduct' />
+                        </label>
+                        <label htmlFor="">
+                            <p>Nazwa Wariantu</p>
+                            <input type="text" name='nameVariant' />
+                        </label>
+                        <div className={styles.formPriceBox}>
+                            <label htmlFor="">
+                                <p>Cena</p>
+                                <input type="text" name='price' />
+                            </label>
+                            <label htmlFor="">
+                                <p>Ilość</p>
+                                <input type="text" name='amount' />
+                            </label>
+                        </div>
+                    </section>
+                    <section>
+                        <table className={styles.formParametersTable}>
+                            <tr>
+                                <th colSpan={3}>Parametry</th>
+                            </tr>
+                            <tr>
+                                <th>Parametr</th>
+                                <th colSpan={2}>Wartość</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" name='paramName_1' value='RAM' />
+                                </td>
+                                <td>
+                                    <input type="text" name='paramValue_1' convaluetent='16 GB' />
+                                </td>
+                                <td>
+                                    <button type="button">x</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" name='paramName_2' value='Pojemność dysku' />
+                                </td>
+                                <td>
+                                    <input type="text" name='paramValue_2' value='512 GB' />
+                                </td>
+                                <td>
+                                    <button type="button">x</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="button" className='btnBlue'>Dodaj parametr</button>
+                    </section>
+                    <section>
+                        <h3>Zdjęcia produktu</h3>
+                        <div className={styles.imgList}>
+                            <div className={styles.imgContainer}>
+                                <img src="laptop_1.png" alt="" />
                                 <button type="button">x</button>
                             </div>
                         </div>
@@ -92,15 +103,15 @@ const AddProduct = () => {
                     </section>
                     <section>
                         <h3>Opis (markdown)</h3>
-                        <div className='editor'>
-                            <div className="editorNav">
-                                <p>markdown</p>
-                                <p>podgląd</p>
+                        <div className={styles.editor}>
+                            <div className={styles.editorNav}>
+                                <p className={`${styles.editorNavTab} ${styles.editorNavTabActive}`}>markdown</p>
+                                <p className={styles.editorNavTab}>podgląd</p>
                             </div>
-                            <textarea name="" id=""></textarea>
+                            <textarea name="" id="" className={styles.editorTextarea}></textarea>
                         </div>
                     </section>
-                    <button type="submit" className="btnBlue">Zapisz zmiany</button>
+                    <button type="submit" className={`btnBlue ${styles.saveBtn}`}>Zapisz zmiany</button>
                 </form>
             </section>
         </div>

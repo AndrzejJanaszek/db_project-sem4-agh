@@ -1,8 +1,9 @@
 .pageContainer{
-    max-width: 960px;
+    max-width: 1080px;
     min-height: var(--min-main-height);
 
     margin: 0 auto;
+    padding: 2rem 0;
     
     display: grid;
     grid-template-columns: 35rem 1fr;
@@ -30,10 +31,6 @@
 .variantBarListItem{
     display: flex;
     padding: 1rem;
-
-    /* tmp */
-    border: 1px solid black;
-    /* border-radius: 1rem; */
 }
 .variantBarListItem_active{
     background-color: var(--green-light);
@@ -61,6 +58,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    gap: 3rem;
+}
+
+.form > section{
+    display: grid;
+    gap: 1rem;
+    /* place-items: center; */
+
+    width: 100%;
+    padding: 1rem;
+
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.form > section > button{
+    margin: 0 auto;
+    border-radius: 1rem;
 }
 
 .form label{
@@ -73,6 +88,7 @@
 
 .form label input{
     width: 100%;
+    padding: 0.5rem;
 }
 
 .formPriceBox{
@@ -83,11 +99,106 @@
 }
 
 .formParametersTable{
-
+    width: 100%;
 }
-.formParametersTable > tr:nth-child(1){
-
+.formParametersTable td:last-child{
+    width: 1rem;
+}
+.formParametersTable input, .formParametersTable th{
+    padding: 1rem;
+    border: none;
+}
+.formParametersTable input{
+    width: 100%;
+}
+.formParametersTable input:focus{
+    outline: none;
+}
+.formParametersTable > tr{
+    border-bottom: 1px solid black;
 }
 .formParametersTable > tr:nth-child(2){
     background-color: var(--green-light);
+}
+
+
+
+.imgList{
+    width: 100%;
+    background-color: #cccccc;
+
+    display: flex;
+    padding: 0 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.imgContainer{
+   position: relative;
+}
+.imgContainer > img{
+    width: 10rem;
+    height: 10rem;
+
+    object-fit: contain;
+}
+.imgContainer > button{
+   position: absolute;
+   top: 0;
+   right: 0;
+
+   background-color: #da7b61;
+}
+
+
+
+
+
+.editor{
+
+}
+.editorNav{
+    width: 100%;
+    display: flex;
+
+    gap: 0.5rem;
+}
+.editorNavTab{
+    padding: 0.5rem 1rem;
+    border-radius: 1rem 1rem 0 0;
+
+    width: fit-content;
+    /* box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.2); */
+
+    background-color: #122574;
+    color: #fff;
+}
+.editorNavTabActive{
+    z-index: 10;
+    background-color: #ffffff;
+    color: #000;
+
+    background: linear-gradient(0deg,rgba(255, 255, 255, 1) 0%, rgba(245, 245, 245, 1) 100%);
+}
+.editorTextarea{
+    width: 100%;
+    height: 25rem;
+
+    resize: none;
+    border:none;
+    border-radius: 0 1rem 1rem 1rem;
+
+    box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.2);
+}
+.editorTextarea:focus{
+    outline: none;
+    padding: 1rem;
+}
+
+
+
+
+
+
+.saveBtn{
+    width: 100%;
 }

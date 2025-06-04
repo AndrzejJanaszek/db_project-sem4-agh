@@ -1,24 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import style from './css/login.module.css'
+import style from './css/login.module.css';
 
 const Login = () => {
-    return (
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
 
-        <div className={style.loginContainer}>
-            <form action="" method='post' className={style.loginForm}>
-                <label htmlFor="email" className={style.loginFormLabel}>
-                    <p>email</p>
-                    <input type="text" name='email'/>
-                </label>
-                <label htmlFor="password" className={style.loginFormLabel}>
-                    <p>hasło</p>
-                    <input type="password" name='password'/>
-                </label>
-                <button className='btnGreen' type='submit'>Zaloguj</button>
-            </form>
-        </div>
-    );
-}
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch('http://localhost:5000/api/login/user', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Błąd serwera: ${res.status}`);
+      }
+
+      const data = await res.json();
+      console.log('Odpowiedź z serwera:', data);
+      // tutaj możesz np. zapisać token, przekierować itp.
+
+    } catch (error) {
+      console.error('Błąd logowania:', error.message);
+    }
+  };
+
+  return (
+    <div className={style.loginContainer}>
+      <form onSubmit={handleSubmit} className={style.loginForm}>
+        <label htmlFor="email" className={style.loginFormLabel}>
+          <p>email</p>
+          <input
+            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="password" className={style.loginFormLabel}>
+          <p>hasło</p>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </label>
+        <button className='btnGreen' type='submit'>Zaloguj</button>
+      </form>
+    </div>
+  );
+};
 
 export default Login;
