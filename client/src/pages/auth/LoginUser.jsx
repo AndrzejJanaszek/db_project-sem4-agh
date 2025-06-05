@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import style from './css/login.module.css';
 
@@ -7,6 +8,7 @@ const Login = () => {
     email: '',
     password: ''
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,12 +31,20 @@ const Login = () => {
 
       const data = await res.json();
       console.log('Odpowiedź z serwera:', data);
-      // tutaj możesz np. zapisać token, przekierować itp.
+
+      // Zakładamy, że serwer zwraca token w `data.token`
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        navigate('/');
+      } else {
+        console.error('Brak tokenu w odpowiedzi serwera');
+      }
 
     } catch (error) {
       console.error('Błąd logowania:', error.message);
     }
   };
+
 
   return (
     <div className={style.loginContainer}>

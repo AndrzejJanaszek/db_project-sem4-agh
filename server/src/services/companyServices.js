@@ -43,6 +43,7 @@ exports.generateCompanyJWT = async (company) => {
         id: company.id,
         email: company.email,
         companyName: company.companyName,
+        type: "company",   // TODO:
       },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }

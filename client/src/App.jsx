@@ -2,13 +2,15 @@ import React from "react";
 import {
   BrowserRouter,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+
+import { Outlet } from "react-router"
 
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
-import Login from "./pages/auth/Login";
+import LoginUser from "./pages/auth/LoginUser";
+import LoginCompany from "./pages/auth/LoginCompany";
 import Register from "./pages/auth/Register";
 import NotFound from "./pages/NotFound";
 import RegisterUser from "./pages/auth/RegisterUser";
@@ -17,6 +19,12 @@ import Product from "./pages/shop/Product";
 import Cart from "./pages/userActions/Cart";
 import AddProduct from "./pages/userActions/AddProduct";
 import CategoryPage from "./pages/shop/CategoryPage";
+import CompanyDashboard from "./pages/company/Dashboard";
+import UserDashboard from "./pages/user/Dashboard";
+
+
+import RequireAuth from './components/RequireAuth';
+
 
 function App() {
   return (
@@ -24,18 +32,42 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
 
-          <Route path="product" element={<Product />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="add-product" element={<AddProduct/>} />
-          <Route path="search" element={<CategoryPage/>} />
+          <Route path="login" >
+            <Route path="user" element={<LoginUser />} />
+            <Route path="company" element={<LoginCompany />} />
+          </Route>
 
           <Route path="register" >
             <Route index element={<Register />} />
             <Route path="user" element={<RegisterUser />} />
             <Route path="company" element={<RegisterCompany />} />
           </Route>
+
+          <Route path="company" 
+          element={
+            <RequireAuth type="company">
+              <Outlet />
+            </RequireAuth>
+          }>
+            <Route index element={<CompanyDashboard />} />
+            <Route path="add-product" element={<AddProduct />} />
+          </Route>
+
+          <Route path="user" 
+          element={
+            <RequireAuth type="user">
+              <Outlet />
+            </RequireAuth>
+          }>
+            <Route index element={<UserDashboard />} />
+            <Route path="cart" element={<Cart />} />
+          </Route>
+
+          <Route path="product" element={<Product />} />
+          <Route path="search" element={<CategoryPage />} />
+
+
 
           <Route path="*" element={<NotFound />} />
         </Route>

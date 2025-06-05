@@ -44,6 +44,7 @@ exports.generateUserJWT = async (user) => {
         email: user.email,
         name: user.name,
         surname: user.surname,
+        type: "user",   // TODO:
       },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
