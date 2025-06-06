@@ -16,8 +16,8 @@ import NotFound from "./pages/NotFound";
 import RegisterUser from "./pages/auth/RegisterUser";
 import RegisterCompany from "./pages/auth/RegisterCompany";
 import Product from "./pages/shop/Product";
-import Cart from "./pages/userActions/Cart";
-import AddProduct from "./pages/userActions/AddProduct";
+import Cart from "./pages/user/Cart";
+import CompanyProductPanel from "./pages/company/Product";
 import CategoryPage from "./pages/shop/CategoryPage";
 import CompanyDashboard from "./pages/company/Dashboard";
 import UserDashboard from "./pages/user/Dashboard";
@@ -51,7 +51,7 @@ function App() {
             </RequireAuth>
           }>
             <Route index element={<CompanyDashboard />} />
-            <Route path="add-product" element={<AddProduct />} />
+            <Route path="product" element={<CompanyProductPanel />} />
           </Route>
 
           <Route path="user" 
@@ -66,8 +66,6 @@ function App() {
 
           <Route path="product" element={<Product />} />
           <Route path="search" element={<CategoryPage />} />
-
-
 
           <Route path="*" element={<NotFound />} />
         </Route>

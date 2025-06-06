@@ -7,7 +7,7 @@ const Dashboard = () => {
       <h2>Panel Firmy</h2>
       <ul>
         <li>
-          <Link to="/company/add-product">Dodaj produkt</Link>
+          <Link to="/company/product">Dodaj produkt</Link>
         </li>
         <li>
           <Link to="/company/edit">Zmień dane firmy</Link>
