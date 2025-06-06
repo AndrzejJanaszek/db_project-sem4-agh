@@ -18,6 +18,10 @@ import RegisterCompany from "./pages/auth/RegisterCompany";
 import Product from "./pages/shop/Product";
 import Cart from "./pages/user/Cart";
 import CompanyProductPanel from "./pages/company/Product";
+import CompanyProductList from "./pages/company/ProductAdd";
+import CompanyProductAdd from "./pages/company/ProductList";
+import CompanySummaryPanel from "./pages/company/Summary";
+import CompanyDataPanel from "./pages/company/DataPanel";
 import CategoryPage from "./pages/shop/CategoryPage";
 import CompanyDashboard from "./pages/company/Dashboard";
 import UserDashboard from "./pages/user/Dashboard";
@@ -51,7 +55,11 @@ function App() {
             </RequireAuth>
           }>
             <Route index element={<CompanyDashboard />} />
+            <Route path="summary" element={<CompanySummaryPanel />} />
+            <Route path="data" element={<CompanyDataPanel />} />
             <Route path="product" element={<CompanyProductPanel />} />
+            <Route path="product/list" element={<CompanyProductList />} />
+            <Route path="product/add" element={<CompanyProductAdd />} />
           </Route>
 
           <Route path="user" 

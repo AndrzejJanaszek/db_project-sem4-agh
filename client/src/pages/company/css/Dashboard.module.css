@@ -1,0 +1,32 @@
+/* tmp */
+
+.section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+
+    margin: 0 auto;
+
+    width: fit-content;
+}
+
+.sectionItem{
+    width: 30rem;
+    height: 30rem;
+    border: 1px solid black;
+
+    
+}
+
+.sectionItem a{
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+
+    transition: background-color 0.3s;
+}
+
+.sectionItem a:hover{
+   background-color: #ccc;
+}
