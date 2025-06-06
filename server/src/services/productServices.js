@@ -122,8 +122,16 @@ exports.getFilteredProducts = async (filters) => {
     });
   }
 
+  if (filters.companyId) {
+    pipeline.push({
+      $match: {
+        companyId: filters.companyId
+      }
+    });
+  }
+
   const priceFilter = {};
-  if (filters.minPrice !== undefined) priceFilter.$gte = Number(filters.minPrice) ;
+  if (filters.minPrice !== undefined) priceFilter.$gte = Number(filters.minPrice);
   if (filters.maxPrice !== undefined) priceFilter.$lte = Number(filters.maxPrice);
 
   if (Object.keys(priceFilter).length > 0) {
@@ -148,3 +156,4 @@ exports.getFilteredProducts = async (filters) => {
   const results = await Product.aggregate(pipeline);
   return results;
 };
+

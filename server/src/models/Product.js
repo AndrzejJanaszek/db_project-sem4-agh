@@ -19,7 +19,8 @@ const productSchema = new mongoose.Schema({
   variants: [variantSchema],
   categoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true },
   subCategoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true },
-  subSubCategoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true }
+  subSubCategoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true },
+  companyId:  { type: String, required: true }
 });
 
 module.exports = mongoose.model("Product", productSchema);
