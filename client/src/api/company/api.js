@@ -1,10 +1,13 @@
 // /api/company/api.js
 
+import { authFetch } from "../../utils/authFetch";
+
 const BASE_URL = "http://localhost:5000/api";
+
 
 // Utwórz nowy produkt
 export const createProduct = async (productData) => {
-    const res = await fetch(`${BASE_URL}/products`, {
+    const res = await authFetch(`${BASE_URL}/products`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -16,7 +19,7 @@ export const createProduct = async (productData) => {
 
 // Usuń produkt
 export const deleteProduct = async (productId) => {
-    const res = await fetch(`${BASE_URL}/products/${productId}`, {
+    const res = await authFetch(`${BASE_URL}/products/${productId}`, {
         method: "DELETE",
     });
     return res.json();
@@ -24,7 +27,7 @@ export const deleteProduct = async (productId) => {
 
 // Utwórz nowy wariant
 export const createVariant = async (productId, variantData) => {
-    const res = await fetch(`${BASE_URL}/products/${productId}/variants`, {
+    const res = await authFetch(`${BASE_URL}/products/${productId}/variants`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -36,7 +39,7 @@ export const createVariant = async (productId, variantData) => {
 
 // Usuń wariant
 export const deleteVariant = async (variantId) => {
-    const res = await fetch(`${BASE_URL}/variants/${variantId}`, {
+    const res = await authFetch(`${BASE_URL}/variants/${variantId}`, {
         method: "DELETE",
     });
     return res.json();
@@ -44,7 +47,7 @@ export const deleteVariant = async (variantId) => {
 
 // Zaktualizuj wariant
 export const updateVariant = async (variantId, updatedData) => {
-    const res = await fetch(`${BASE_URL}/variants/${variantId}`, {
+    const res = await authFetch(`${BASE_URL}/variants/${variantId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -56,7 +59,7 @@ export const updateVariant = async (variantId, updatedData) => {
 
 // Zaktualizuj nazwę produktu
 export const updateProductName = async (productId, newName) => {
-    const res = await fetch(`${BASE_URL}/products/${productId}/name`, {
+    const res = await authFetch(`${BASE_URL}/products/${productId}/name`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
