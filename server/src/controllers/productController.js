@@ -80,13 +80,25 @@ exports.deleteVariant = async (req, res) => {
   }
 };
 
+// zwraca listę produktów po ich polach
 exports.getProducts = async (req, res) => {
   try {
     const filters = req.query;
-    const products = await productServices.getFilteredProducts(filters);
+    const products = await productServices.getFilteredProductsByProductFields(filters);
     res.json(products);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
+// zwraca listę obiektów:
+// {product: OBJ, variantId: [lista id variantow]}
+exports.getProductVariants = async (req, res) => {
+  try {
+    const filters = req.query;
+    const products = await productServices.getFilteredProductsWithVariantInfo(filters);
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

@@ -87,73 +87,98 @@ exports.deleteVariant = async (productId, variantId) => {
   return updated;
 };
 
-exports.getFilteredProducts = async (filters) => {
-  const pipeline = [];
-
-  pipeline.push({ $unwind: "$variants" });
+exports.getFilteredProductsByProductFields  = async (filters) => {
+  const query = {};
 
   if (filters.name) {
-    pipeline.push({
-      $match: {
-        name: { $regex: filters.name, $options: "i" }
-      }
-    });
-  }
-
-  if (filters.categoryId) {
-    pipeline.push({
-      $match: {
-        categoryId: filters.categoryId
-      }
-    });
-  }
-  if (filters.subCategoryId) {
-    pipeline.push({
-      $match: {
-        subCategoryId: filters.subCategoryId
-      }
-    });
-  }
-  if (filters.subSubCategoryId) {
-    pipeline.push({
-      $match: {
-        subSubCategoryId: filters.subSubCategoryId
-      }
-    });
+    query.name = { $regex: filters.name, $options: "i" };
   }
 
   if (filters.companyId) {
-    pipeline.push({
-      $match: {
-        companyId: filters.companyId
+    query.companyId = filters.companyId;
+  }
+
+  if (filters.categoryId) {
+    query.categoryId = filters.categoryId;
+  }
+
+  if (filters.subCategoryId) {
+    query.subCategoryId = filters.subCategoryId;
+  }
+
+  if (filters.subSubCategoryId) {
+    query.subSubCategoryId = filters.subSubCategoryId;
+  }
+
+  const products = await Product.find(query);
+  return products;
+};
+
+
+exports.getFilteredProductsWithVariantInfo = async (filters) => {
+  const matchProductStage = {};
+
+  if (filters.companyId) matchProductStage.companyId = filters.companyId;
+  if (filters.categoryId) matchProductStage.categoryId = filters.categoryId;
+  if (filters.subCategoryId) matchProductStage.subCategoryId = filters.subCategoryId;
+  if (filters.subSubCategoryId) matchProductStage.subSubCategoryId = filters.subSubCategoryId;
+
+  const pipeline = [];
+
+  if (Object.keys(matchProductStage).length > 0) {
+    pipeline.push({ $match: matchProductStage });
+  }
+
+  // Rozwijanie wariantów
+  pipeline.push({ $unwind: "$variants" });
+
+  const variantMatchConditions = [];
+
+  if (filters.minPrice !== undefined) {
+    variantMatchConditions.push({ "variants.price": { $gte: Number(filters.minPrice) } });
+  }
+
+  if (filters.maxPrice !== undefined) {
+    variantMatchConditions.push({ "variants.price": { $lte: Number(filters.maxPrice) } });
+  }
+
+  if (filters.name) {
+    variantMatchConditions.push({
+      $expr: {
+        $regexMatch: {
+          input: { $concat: ["$name", " ", "$variants.name"] },
+          regex: filters.name,
+          options: "i"
+        }
       }
     });
   }
 
-  const priceFilter = {};
-  if (filters.minPrice !== undefined) priceFilter.$gte = Number(filters.minPrice);
-  if (filters.maxPrice !== undefined) priceFilter.$lte = Number(filters.maxPrice);
-
-  if (Object.keys(priceFilter).length > 0) {
-    pipeline.push({
-      $match: {
-        "variants.price": priceFilter
-      }
-    });
+  if (variantMatchConditions.length > 0) {
+    pipeline.push({ $match: { $and: variantMatchConditions } });
   }
 
+  // Grupowanie z powrotem po produkcie
   pipeline.push({
     $group: {
       _id: "$_id",
-      name: { $first: "$name" },
-      categoryId: { $first: "$categoryId" },
-      subCategoryId: { $first: "$subCategoryId" },
-      subSubCategoryId: { $first: "$subSubCategoryId" },
-      variants: { $push: "$variants" }
+      variantIds: { $push: "$variants._id" }
     }
   });
 
-  const results = await Product.aggregate(pipeline);
+  // Pobranie pełnego produktu do każdego _id
+  const matched = await Product.aggregate(pipeline);
+
+  // Pobranie pełnych produktów i złączenie ich z variantIds
+  const results = await Promise.all(
+    matched.map(async (entry) => {
+      const product = await Product.findById(entry._id);
+      return {
+        product,
+        variantIds: entry.variantIds
+      };
+    })
+  );
+
   return results;
 };
-

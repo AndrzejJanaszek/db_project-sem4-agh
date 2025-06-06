@@ -28,5 +28,7 @@ router.put("/:id/category", verifyToken, requireCompany, productController.updat
 
 // get products filtred
 router.get("/", productController.getProducts);
+// get product variants filtred
+router.get("/variants", productController.getProductVariants);
 
 module.exports = router;
