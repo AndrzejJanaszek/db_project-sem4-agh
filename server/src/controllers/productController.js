@@ -102,3 +102,20 @@ exports.getProductVariants = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getProductById = async (req, res) => {
+  const productId = req.params.id;
+
+  try {
+    const product = await productServices.getProductById(productId);
+
+    if (!product) {
+      return res.status(404).json({ message: 'Produkt nie znaleziony' });
+    }
+
+    res.json(product);
+  } catch (error) {
+    console.error('Błąd podczas pobierania produktu:', error);
+    res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
+  }
+};

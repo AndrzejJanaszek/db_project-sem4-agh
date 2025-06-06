@@ -28,6 +28,8 @@ router.put("/:id/category", verifyToken, requireCompany, productController.updat
 
 // get products filtred
 router.get("/", productController.getProducts);
+// get product by id
+router.get("/:id", productController.getProductById);
 // get product variants filtred
 router.get("/variants", productController.getProductVariants);
 

@@ -57,7 +57,7 @@ function App() {
             <Route index element={<CompanyDashboard />} />
             <Route path="summary" element={<CompanySummaryPanel />} />
             <Route path="data" element={<CompanyDataPanel />} />
-            <Route path="product" element={<CompanyProductPanel />} />
+            <Route path="product/:id" element={<CompanyProductPanel />} />
             <Route path="product/list" element={<CompanyProductList />} />
             <Route path="product/add" element={<CompanyProductAdd />} />
           </Route>

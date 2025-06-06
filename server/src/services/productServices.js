@@ -182,3 +182,7 @@ exports.getFilteredProductsWithVariantInfo = async (filters) => {
 
   return results;
 };
+
+exports.getProductById = async (id) => {
+  return await Product.findOne({ _id: id });
+};

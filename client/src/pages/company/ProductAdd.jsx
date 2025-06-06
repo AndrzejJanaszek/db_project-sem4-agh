@@ -3,6 +3,8 @@ import * as catApi from "../../api/categories/api";
 import { createProduct } from "../../api/company/api";
 import { useNavigate } from "react-router-dom";
 
+import { getCompanyIdFromJWT } from "../../utils/jwt";
+
 const ProductAdd = () => {
     const navigate = useNavigate();
 
@@ -47,11 +49,18 @@ const ProductAdd = () => {
 
     const handleAddProduct = async () => {
         try {
+            const companyId = getCompanyIdFromJWT();
+            if (!companyId) {
+                alert("Brak companyId w tokenie, proszę się zalogować ponownie.");
+                return;
+            }
+
             const res = await createProduct({
                 name: productName,
                 categoryId: selectedCategoryId,
                 subCategoryId: selectedSubcategoryId,
                 subSubCategoryId: selectedSubsubcategoryId,
+                companyId,
             });
 
             if (!res || res.error) {

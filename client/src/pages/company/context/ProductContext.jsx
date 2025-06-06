@@ -1,13 +1,12 @@
 // ProductContext.jsx
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import * as api from "../../../api/company/api"
+import { getProductById } from "../../../api/product/api";
 
 export const ProductContext = createContext();
 
-export const ProductProvider = ({ children }) => {
-    const [productId, setProductId] = useState("uuid")
-
+export const ProductProvider = ({ children, productId }) => {
     const [productName, setProductName] = useState("");
     const [isProductNameChanged, setIsProductNameChanged] = useState(false);
 
@@ -40,6 +39,7 @@ export const ProductProvider = ({ children }) => {
 
             const created = await api.createVariant(productId, newVariant);
             const newId = created.id; // zakładamy, że backend zwraca { id, ... }
+            
 
             setVariants(prev => [...prev, { ...created }]);
             setActiveVariantId(newId);
@@ -134,6 +134,32 @@ export const ProductProvider = ({ children }) => {
         }
         setActiveVariantId(newId);
     };
+
+    useEffect(() => {
+        const loadProduct = async () => {
+            try {
+                const product = await getProductById(productId);
+
+                console.log(product);
+                
+
+                setProductName(product.name || "");
+                setVariants(product.variants || []);
+                setIsProductNameChanged(false);
+                setChangedVariants({});
+
+                if (product.variants?.length > 0) {
+                    setActiveVariantId(product.variants[0].id);
+                }
+            } catch (err) {
+                console.error("Błąd ładowania produktu:", err);
+            }
+        };
+
+        if (productId !== "uuid") {
+            loadProduct();
+        }
+    }, [productId]);
 
     const value = {
         // product

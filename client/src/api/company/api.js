@@ -34,6 +34,9 @@ export const createVariant = async (productId, variantData) => {
         },
         body: JSON.stringify(variantData),
     });
+
+    console.log( await res.json());
+    
     return res.json();
 };
 
@@ -67,4 +70,26 @@ export const updateProductName = async (productId, newName) => {
         body: JSON.stringify({ name: newName }),
     });
     return res.json();
+};
+
+export const getCompanyProductList = async (companyId) => {
+  try {
+    const url = new URL(`${BASE_URL}/products`);
+    if (companyId) {
+      url.searchParams.append("companyId", companyId);
+    }
+
+    const res = await authFetch(url.toString(), {
+      method: "GET",
+    });
+
+    if (!res.ok) {
+      throw new Error(`Błąd serwera: ${res.status}`);
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("Błąd podczas pobierania listy produktów firmy:", error);
+    throw error;
+  }
 };
