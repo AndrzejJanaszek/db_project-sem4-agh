@@ -44,7 +44,7 @@ exports.deleteProduct = async (productId) => {
   return deleted; // null jeśli nie znaleziono
 };
 
-exports.addVariant = async (productId, newVariant) => {
+exports.addVariant = async (productId, newVariant) => {  
   const updatedProduct = await Product.findByIdAndUpdate(
     productId,
     { $push: { variants: newVariant } },

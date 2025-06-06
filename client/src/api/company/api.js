@@ -27,22 +27,23 @@ export const deleteProduct = async (productId) => {
 
 // Utwórz nowy wariant
 export const createVariant = async (productId, variantData) => {
-    const res = await authFetch(`${BASE_URL}/products/${productId}/variants`, {
+    const res = await authFetch(`${BASE_URL}/products/${productId}/variant`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(variantData),
     });
-
-    console.log( await res.json());
     
+    console.log("ADASDSAD", res.body);
+    
+
     return res.json();
 };
 
 // Usuń wariant
 export const deleteVariant = async (variantId) => {
-    const res = await authFetch(`${BASE_URL}/variants/${variantId}`, {
+    const res = await authFetch(`${BASE_URL}/variant/${variantId}`, {
         method: "DELETE",
     });
     return res.json();
@@ -50,7 +51,7 @@ export const deleteVariant = async (variantId) => {
 
 // Zaktualizuj wariant
 export const updateVariant = async (variantId, updatedData) => {
-    const res = await authFetch(`${BASE_URL}/variants/${variantId}`, {
+    const res = await authFetch(`${BASE_URL}/variant/${variantId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

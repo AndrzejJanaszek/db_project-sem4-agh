@@ -37,7 +37,9 @@ export const ProductProvider = ({ children, productId }) => {
                 amount: 0,
             };
 
+            console.log("created");
             const created = await api.createVariant(productId, newVariant);
+            
             const newId = created.id; // zakładamy, że backend zwraca { id, ... }
             
 
