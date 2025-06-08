@@ -28,6 +28,7 @@ import UserDashboard from "./pages/user/Dashboard";
 
 
 import RequireAuth from './components/RequireAuth';
+import Search from "./pages/shop/Search";
 
 
 function App() {
@@ -73,7 +74,8 @@ function App() {
           </Route>
 
           <Route path="product" element={<Product />} />
-          <Route path="search" element={<CategoryPage />} />
+          <Route path="category-page" element={<CategoryPage />} />
+          <Route path="search" element={<Search></Search>} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

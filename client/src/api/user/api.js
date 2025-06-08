@@ -1,0 +1,53 @@
+// addProductToCart(productId, count)
+// removeProductFtomCart(productId, count)
+// 
+// makeTransaction()
+import { getUserIdFromJWT } from "../../utils/jwt"
+
+const BASE_URL = "http://localhost:5000/api";
+
+/**
+ * Dodaje produkt do koszyka lub zwiększa jego ilość.
+ * Jeśli produkt już istnieje, backend zwiększy jego count.
+ * @param {string} productId
+ * @param {number} count
+ */
+export const addProductToCart = async (productId, variantId, count = 1) => {
+    const userId = await getUserIdFromJWT();
+    const res = await fetch(`${BASE_URL}/cart`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId, variantId, count, userId }),
+    });
+
+    if (!res.ok) {
+        throw new Error("Nie udało się dodać produktu do koszyka");
+    }
+
+    return await res.json();
+};
+
+/**
+ * Usuwa produkt z koszyka lub zmniejsza jego ilość.
+ * Jeśli count po zmniejszeniu <= 0, backend usunie produkt całkowicie.
+ * @param {string} productId
+ * @param {number} count
+ */
+export const removeProductFromCart = async (productId, variantId, count = 1) => {
+    const userId = await  getUserIdFromJWT();
+    const res = await fetch(`${BASE_URL}/cart`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId, variantId, count: -Math.abs(count),  userId  }),
+    });
+
+    if (!res.ok) {
+        throw new Error("Nie udało się usunąć produktu z koszyka");
+    }
+
+    return await res.json();
+};
