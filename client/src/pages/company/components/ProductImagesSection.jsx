@@ -26,9 +26,9 @@ const ProductImagesSection = ({ initialImages = [] }) => {
         fileInputRef.current.click();
     };
 
-    useEffect(() => {
-        console.log("Aktualne images:", images);
-    }, [images]);
+    // useEffect(() => {
+    //     console.log("Aktualne images:", images);
+    // }, [images]);
 
 
     return (

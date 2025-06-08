@@ -7,7 +7,9 @@ const ProductContent = () => {
     const {
         productName,
         setProductName,
+        saveProductName
     } = useProduct();
+    
 
     return (
         <div className={styles.pageContainer}>
@@ -25,7 +27,7 @@ const ProductContent = () => {
                             onChange={(e) => setProductName(e.target.value)}
                         />
                     </label>
-                    <button className='btnBlue'>Zmień</button>
+                    <button className='btnBlue' type="button" onClick={saveProductName}>Zmień</button>
                 </section>
 
                 <ProductVariantDataForm />

@@ -26,9 +26,9 @@ const ProductVariantBarSection = () => {
             <div className={styles.variantBarList}>
                 {variants.map((variant) => (
                     <div
-                        key={variant.id}
-                        className={`${styles.variantBarListItem} ${variant.id === activeVariantId ? styles.variantBarListItem_active : ""}`}
-                        onClick={() => setActiveVariantId(variant.id)}
+                        key={variant._id}
+                        className={`${styles.variantBarListItem} ${variant._id === activeVariantId ? styles.variantBarListItem_active : ""}`}
+                        onClick={() => setActiveVariantId(variant._id)}
                     >
                         <div className={styles.variantBarListItemContent}>
                             <h3>{variant.name}</h3>
@@ -40,7 +40,7 @@ const ProductVariantBarSection = () => {
                                 className="btnBlue"
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    copyVariant(variant.id);
+                                    copyVariant(variant._id);
                                 }}
                             >
                                 copy
@@ -50,7 +50,7 @@ const ProductVariantBarSection = () => {
                                 className="btnRed"
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    deleteVariant(variant.id);
+                                    deleteVariant(variant._id);
                                 }}
                             >
                                 X

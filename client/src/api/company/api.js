@@ -34,24 +34,21 @@ export const createVariant = async (productId, variantData) => {
         },
         body: JSON.stringify(variantData),
     });
-    
-    console.log("ADASDSAD", res.body);
-    
 
     return res.json();
 };
 
 // Usuń wariant
-export const deleteVariant = async (variantId) => {
-    const res = await authFetch(`${BASE_URL}/variant/${variantId}`, {
+export const deleteVariant = async (productId, variantId) => {
+    const res = await authFetch(`${BASE_URL}/products/${productId}/variant/${variantId}`, {
         method: "DELETE",
     });
     return res.json();
 };
 
 // Zaktualizuj wariant
-export const updateVariant = async (variantId, updatedData) => {
-    const res = await authFetch(`${BASE_URL}/variant/${variantId}`, {
+export const updateVariant = async (productId, variantId, updatedData) => {
+    const res = await authFetch(`${BASE_URL}/products/${productId}/variant/${variantId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

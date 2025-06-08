@@ -10,11 +10,10 @@ const ProductVariantDataForm = () => {
     const {
         activeVariantId,
         variants,
-        updateVariant,
-        saveVariant,
+        updateAndSaveVariant,
     } = useProduct();
 
-    const variant = variants.find(v => v.id === activeVariantId);
+    const variant = variants.find(v => v._id === activeVariantId);
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
@@ -40,7 +39,7 @@ const ProductVariantDataForm = () => {
         e.preventDefault();
         if (!variant) return;
 
-        updateVariant(variant.id, {
+        updateAndSaveVariant(variant._id, {
             name,
             price,
             amount,
@@ -48,8 +47,6 @@ const ProductVariantDataForm = () => {
             images,
             description,
         });
-
-        saveVariant(variant.id);
     };
 
     if (!variant) return <p>Brak aktywnego wariantu</p>;

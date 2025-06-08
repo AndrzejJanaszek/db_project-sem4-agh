@@ -31,7 +31,6 @@ const Login = () => {
       }
 
       const data = await res.json();
-      console.log('Odpowiedź z serwera:', data);
 
       // Zakładamy, że serwer zwraca token w `data.token`
       if (data.token) {

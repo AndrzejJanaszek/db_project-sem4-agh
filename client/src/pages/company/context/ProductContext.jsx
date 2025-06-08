@@ -22,7 +22,6 @@ export const ProductProvider = ({ children, productId }) => {
 
     const saveProductName = async () => {
         await api.updateProductName(productId, productName);
-        console.log("Saving product name:", productName);
         setIsProductNameChanged(false);
     };
 
@@ -37,11 +36,10 @@ export const ProductProvider = ({ children, productId }) => {
                 amount: 0,
             };
 
-            console.log("created");
-            const created = await api.createVariant(productId, newVariant);
+            const productWithNewVariant = await api.createVariant(productId, newVariant);
+            const created = productWithNewVariant.variants.at(-1);
             
-            const newId = created.id; // zakładamy, że backend zwraca { id, ... }
-            
+            const newId = created._id; // zakładamy, że backend zwraca { id, ... }
 
             setVariants(prev => [...prev, { ...created }]);
             setActiveVariantId(newId);
@@ -53,16 +51,16 @@ export const ProductProvider = ({ children, productId }) => {
 
     const deleteVariant = async (id) => {
         try {
-            await api.deleteVariant(id);
-            setVariants(prev => prev.filter(v => v.id !== id));
+            await api.deleteVariant(productId ,id);
+            setVariants(prev => prev.filter(v => v._id !== id));
             setChangedVariants(prev => {
                 const { [id]: _, ...rest } = prev;
                 return rest;
             });
 
             if (activeVariantId === id && variants.length > 1) {
-                const firstOther = variants.find(v => v.id !== id);
-                if (firstOther) setActiveVariantId(firstOther.id);
+                const firstOther = variants.find(v => v._id !== id);
+                if (firstOther) setActiveVariantId(firstOther._id);
             }
         } catch (error) {
             console.error("Błąd przy usuwaniu wariantu:", error);
@@ -71,13 +69,13 @@ export const ProductProvider = ({ children, productId }) => {
 
     const updateVariant = (id, updatedData) => {
         setVariants(prev =>
-            prev.map(v => (v.id === id ? { ...v, ...updatedData } : v))
+            prev.map(v => (v._id === id ? { ...v, ...updatedData } : v))
         );
         markVariantAsChanged(id);
     };
 
     const copyVariant = async (id) => {
-        const original = variants.find(v => v.id === id);
+        const original = variants.find(v => v._id === id);
         if (!original) return;
 
         const variantToCreate = {
@@ -86,13 +84,15 @@ export const ProductProvider = ({ children, productId }) => {
         };
 
         // usuń oryginalne ID – backend nada nowy
-        delete variantToCreate.id;
+        delete variantToCreate._id;
 
         try {
-            const created = await api.createVariant(productId, variantToCreate);
-            const newId = created.id;
+            const productWithNewVariant = await api.createVariant(productId, variantToCreate);
+            const created = productWithNewVariant.variants.at(-1);
+            const newId = created._id;
 
-            setVariants(prev => [...prev, created]);
+            setVariants(productWithNewVariant.variants);
+            // setVariants(prev => [...prev, created]);
             setChangedVariants(prev => ({ ...prev, [newId]: true }));
             setActiveVariantId(newId);
         } catch (error) {
@@ -101,14 +101,17 @@ export const ProductProvider = ({ children, productId }) => {
     };
 
 
-    const saveVariant = async (id) => {
-        const variant = variants.find(v => v.id === id);
-        if (!variant) return;
+    const updateAndSaveVariant = async (id, updatedData) => {
+        const updatedVariant = { ...variants.find(v => v._id === id), ...updatedData };
+        
+        setVariants(prev =>
+            prev.map(v => (v._id === id ? updatedVariant : v))
+        );
 
-        await api.updateVariant(variant);
-        console.log("Saving variant:", variant);
-
-        resetVariantChanged(id);
+        
+        // markVariantAsChanged(id);
+        await api.updateVariant(productId, updatedVariant._id ,updatedVariant);
+        // resetVariantChanged(id);
     };
 
     const isVariantChanged = (id) => !!changedVariants[id];
@@ -131,7 +134,7 @@ export const ProductProvider = ({ children, productId }) => {
                 "Wariant ma niezapisane zmiany. Czy zapisać przed przełączeniem?"
             );
             if (confirmed) {
-                await saveVariant(activeVariantId);
+                await updateAndSaveVariant(activeVariantId);
             }
         }
         setActiveVariantId(newId);
@@ -141,17 +144,14 @@ export const ProductProvider = ({ children, productId }) => {
         const loadProduct = async () => {
             try {
                 const product = await getProductById(productId);
-
-                console.log(product);
                 
-
                 setProductName(product.name || "");
                 setVariants(product.variants || []);
                 setIsProductNameChanged(false);
                 setChangedVariants({});
 
                 if (product.variants?.length > 0) {
-                    setActiveVariantId(product.variants[0].id);
+                    setActiveVariantId(product.variants[0]._id);
                 }
             } catch (err) {
                 console.error("Błąd ładowania produktu:", err);
@@ -162,6 +162,11 @@ export const ProductProvider = ({ children, productId }) => {
             loadProduct();
         }
     }, [productId]);
+
+    useEffect(() => {
+        console.log(activeVariantId);
+        
+    }, [activeVariantId])
 
     const value = {
         // product
@@ -178,7 +183,7 @@ export const ProductProvider = ({ children, productId }) => {
         deleteVariant,
         updateVariant,
         copyVariant,
-        saveVariant,
+        updateAndSaveVariant,
         isVariantChanged,
     };
 
