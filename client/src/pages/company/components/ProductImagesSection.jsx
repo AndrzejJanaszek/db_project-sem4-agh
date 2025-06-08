@@ -1,24 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import styles from "../css/Product.module.css";
 
-const ProductImagesSection = ({ initialImages = [] }) => {
-    const [images, setImages] = useState(initialImages); // [{ src, file, isNew }]
+const ProductImagesSection = ({ images, setImages }) => {
     const fileInputRef = useRef(null);
 
     const handleFileChange = (e) => {
         const files = Array.from(e.target.files);
-        const newImages = files.map(file => ({
-            src: URL.createObjectURL(file),
-            file,
-            isNew: true
-        }));
-        setImages(prev => [...prev, ...newImages]);
+
+        // zakładamy, że dodajesz tylko nazwy plików lokalnych (dla backendu do uploadu)
+        const fileNames = files.map(file => file.name);
+
+        // jeśli chcesz też dodać podgląd, trzeba to zmodyfikować
+        setImages(prev => [...prev, ...fileNames]);
     };
 
     const handleRemove = (index) => {
-        const img = images[index];
-        // Zwolnij blob URL jeśli to lokalny plik
-        if (img.isNew) URL.revokeObjectURL(img.src);
         setImages(prev => prev.filter((_, i) => i !== index));
     };
 
@@ -26,18 +22,16 @@ const ProductImagesSection = ({ initialImages = [] }) => {
         fileInputRef.current.click();
     };
 
-    // useEffect(() => {
-    //     console.log("Aktualne images:", images);
-    // }, [images]);
-
-
     return (
         <section>
             <h3>Zdjęcia produktu</h3>
             <div className={styles.imgList}>
                 {images.map((img, index) => (
                     <div key={index} className={styles.imgContainer}>
-                        <img src={img.src} alt={`zdjęcie-${index}`} />
+                        <img
+                            src={`/${img}`} // albo inna Twoja ścieżka
+                            alt={`zdjęcie-${index}`}
+                        />
                         <button type="button" onClick={() => handleRemove(index)}>x</button>
                     </div>
                 ))}

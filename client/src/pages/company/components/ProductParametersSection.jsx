@@ -1,27 +1,20 @@
-import { useState } from 'react';
 import styles from "../css/Product.module.css";
 
-const ProductParametersTable = () => {
-    const [parameters, setParameters] = useState([
-        { id: 1, name: "RAM", value: "16 GB" },
-        { id: 2, name: "Pojemność dysku", value: "512 GB" }
-    ]);
-
-    const handleChange = (id, field, newValue) => {
+const ProductParametersTable = ({ parameters, setParameters }) => {
+    const handleChange = (index, field, newValue) => {
         setParameters(prev =>
-            prev.map(param =>
-                param.id === id ? { ...param, [field]: newValue } : param
+            prev.map((param, i) =>
+                i === index ? { ...param, [field]: newValue } : param
             )
         );
     };
 
     const handleAdd = () => {
-        const newId = parameters.length ? Math.max(...parameters.map(p => p.id)) + 1 : 1;
-        setParameters([...parameters, { id: newId, name: "", value: "" }]);
+        setParameters(prev => [...prev, { name: "", value: "" }]);
     };
 
-    const handleRemove = (id) => {
-        setParameters(prev => prev.filter(param => param.id !== id));
+    const handleRemove = (index) => {
+        setParameters(prev => prev.filter((_, i) => i !== index));
     };
 
     return (
@@ -38,13 +31,13 @@ const ProductParametersTable = () => {
                 </thead>
                 <tbody>
                     {parameters.map((param, index) => (
-                        <tr key={param.id}>
+                        <tr key={index}>
                             <td>
                                 <input
                                     type="text"
                                     name={`paramName_${index + 1}`}
                                     value={param.name}
-                                    onChange={(e) => handleChange(param.id, "name", e.target.value)}
+                                    onChange={(e) => handleChange(index, "name", e.target.value)}
                                 />
                             </td>
                             <td>
@@ -52,11 +45,11 @@ const ProductParametersTable = () => {
                                     type="text"
                                     name={`paramValue_${index + 1}`}
                                     value={param.value}
-                                    onChange={(e) => handleChange(param.id, "value", e.target.value)}
+                                    onChange={(e) => handleChange(index, "value", e.target.value)}
                                 />
                             </td>
                             <td>
-                                <button type="button" onClick={() => handleRemove(param.id)}>x</button>
+                                <button type="button" onClick={() => handleRemove(index)}>x</button>
                             </td>
                         </tr>
                     ))}

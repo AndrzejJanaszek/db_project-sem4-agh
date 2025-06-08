@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import styles from "../css/Product.module.css";
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useState } from "react";
 
-const ProductDescriptionSection = () => {
+const ProductDescriptionSection = ({ description, setDescription }) => {
     const [tab, setTab] = useState("markdown"); // "markdown" lub "preview"
-    const [content, setContent] = useState("");
 
     return (
         <section>
@@ -30,13 +29,13 @@ const ProductDescriptionSection = () => {
                 {tab === "markdown" ? (
                     <textarea
                         className={styles.editorTextarea}
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                     />
                 ) : (
                     <div className={styles.editorPreview}>
                         <ReactMarkdown
-                            children={content || "*Brak treści*"}
+                            children={description || "*Brak treści*"}
                             components={{
                                 code({ node, inline, className, children, ...props }) {
                                     const match = /language-(\w+)/.exec(className || "");
@@ -62,6 +61,6 @@ const ProductDescriptionSection = () => {
             </div>
         </section>
     );
-}
+};
 
 export default ProductDescriptionSection;
