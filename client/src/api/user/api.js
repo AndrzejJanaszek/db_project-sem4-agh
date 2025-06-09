@@ -35,14 +35,14 @@ export const addProductToCart = async (productId, variantId, count = 1) => {
  * @param {string} productId
  * @param {number} count
  */
-export const removeProductFromCart = async (productId, variantId, count = 1) => {
+export const removeProductFromCart = async (productId, variantId, count = 0) => {
     const userId = await  getUserIdFromJWT();
     const res = await fetch(`${BASE_URL}/cart`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ productId, variantId, count: -Math.abs(count),  userId  }),
+        body: JSON.stringify({ productId, variantId, count, userId }),
     });
 
     if (!res.ok) {
@@ -50,4 +50,22 @@ export const removeProductFromCart = async (productId, variantId, count = 1) => 
     }
 
     return await res.json();
+};
+
+
+export const getCartProducts = async () => {
+  const userId = await getUserIdFromJWT();
+
+  const res = await fetch(`${BASE_URL}/cart/${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Nie udało się pobrać produktów z koszyka");
+  }
+
+  return await res.json();
 };
