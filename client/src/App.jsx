@@ -29,6 +29,7 @@ import UserDashboard from "./pages/user/Dashboard";
 
 import RequireAuth from './components/RequireAuth';
 import Search from "./pages/shop/Search";
+import TransactionHistory from "./pages/user/TransactionHistory";
 
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
           }>
             <Route index element={<UserDashboard />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="transactions" element={<TransactionHistory />} />
           </Route>
 
           <Route path="product" element={<Product />} />

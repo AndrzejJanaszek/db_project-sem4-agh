@@ -12,6 +12,9 @@ const Dashboard = () => {
         <li>
           <Link to="/user/edit">Zmień dane użytkownika</Link>
         </li>
+        <li>
+          <Link to="/user/transactions">historia transakcji</Link>
+        </li>
       </ul>
     </div>
   );

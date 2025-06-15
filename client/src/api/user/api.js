@@ -95,3 +95,20 @@ export const makeTransaction = async (city, street, postcode, products) => {
 
   return await res.json(); // może zwrócić np. id transakcji
 };
+
+export const getTransactionHistory = async () => {
+  const userId = await getUserIdFromJWT();
+
+  const res = await fetch(`${BASE_URL}/transactions/${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Nie udało się pobrać historii transakcji.");
+  }
+
+  return await res.json();
+};
