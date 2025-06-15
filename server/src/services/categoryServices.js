@@ -15,8 +15,6 @@ exports.getSubCategoryById = async (categoryId, subCategoryId) => {
 
   // Porównujemy _id jako string, bo subCategoryId jest stringiem z parametru URL
   const subcategory = category.subcategories.id(subCategoryId);
-
-  console.log("subcat", subcategory);
   
   return subcategory || null;
 };

@@ -29,6 +29,13 @@ exports.removeFromCart = async (userId, productId, variantId) => {
   );
 };
 
+exports.clearCart = async (userId) => {
+  await db.query(
+    "DELETE FROM cart WHERE user_id = ?",
+    [userId]
+  );
+};
+
 exports.updateProductCount = async (userId, productId, variantId, count) => {
   if (count <= 0) {
     await this.removeFromCart(userId, productId, variantId);
@@ -74,6 +81,7 @@ exports.getCart = async (userId) => {
         name: product.name,
         description: product.description,
         images: product.images,
+        companyId: product.companyId,
         variants: []
       };
     }

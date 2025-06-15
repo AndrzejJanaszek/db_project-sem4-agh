@@ -2,16 +2,24 @@ import { useEffect, useState } from "react";
 import styles from "./css/Cart.module.css";
 import formStyle from "../auth/css/login.module.css";
 import CartItem from "../../components/CartItem";
-import { getCartProducts, addProductToCart, removeProductFromCart } from "../../api/user/api";
+import { getCartProducts, addProductToCart, removeProductFromCart, makeTransaction } from "../../api/user/api";
 
 const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({
+    city: "",
+    street: "",
+    postcode: ""
+  });
+  const [transactionStatus, setTransactionStatus] = useState(null);
 
   const fetchCart = async () => {
     try {
       const data = await getCartProducts();
+      console.log(data);
+      
 
       setCartProducts(data);
     } catch (err) {
@@ -28,6 +36,7 @@ const Cart = () => {
   const flatItems = cartProducts.flatMap((product) =>
     product.variants.map((variant) => ({
       productId: product._id,
+      companyId: product.companyId,
       variantId: variant._id,
       productName: product.name,
       variantName: variant.name,
@@ -35,8 +44,6 @@ const Cart = () => {
       price: variant.price,
       image: variant.images?.[0] || "placeholder.png"
     }))
-
-
   );
 
   const totalItems = flatItems.reduce((sum, item) => sum + item.count, 0);
@@ -57,6 +64,30 @@ const Cart = () => {
     await fetchCart();
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleTransaction = async () => {
+    try {
+      const products = flatItems.map(({ productId, variantId, companyId, count }) => ({
+        productId,
+        variantId,
+        companyId,
+        count,
+      }));
+
+      await makeTransaction(formData.city, formData.street, formData.postcode, products);
+
+      setTransactionStatus("success");
+      await fetchCart(); // możesz też tu dodać redirect albo czyszczenie formularza
+    } catch (err) {
+      console.error(err);
+      setTransactionStatus("error");
+    }
+  };
+
   if (loading) return <p>Ładowanie koszyka...</p>;
   if (error) return <p>{error}</p>;
 
@@ -73,7 +104,7 @@ const Cart = () => {
             price={item.price}
             currency="zł"
             onIncrease={() => handleIncrease(item.productId, item.variantId)}
-            onDecrease={() => handleDecrease(item.productId, item.variantId, item.count-1)}
+            onDecrease={() => handleDecrease(item.productId, item.variantId, item.count - 1)}
             onRemove={() => handleRemove(item.productId, item.variantId)}
           />
         ))}
@@ -96,20 +127,22 @@ const Cart = () => {
           <h3>Adres dostawy</h3>
           <label className={formStyle.loginFormLabel}>
             <p>miasto</p>
-            <input type="text" name="city" />
+            <input type="text" name="city" value={formData.city} onChange={handleInputChange} />
           </label>
           <label className={formStyle.loginFormLabel}>
             <p>ulica</p>
-            <input type="text" name="street" />
+            <input type="text" name="street" value={formData.street} onChange={handleInputChange} />
           </label>
           <label className={formStyle.loginFormLabel}>
             <p>kod pocztowy</p>
-            <input type="text" name="postcode" />
+            <input type="text" name="postcode" value={formData.postcode} onChange={handleInputChange} />
           </label>
         </section>
       </form>
 
-      <button className="btnGreen">Dokonaj zakupy</button>
+      <button className="btnGreen" onClick={handleTransaction}>
+        Dokonaj zakupy
+      </button>
     </section>
   );
 };

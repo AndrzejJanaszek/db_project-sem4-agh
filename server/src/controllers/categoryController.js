@@ -30,8 +30,6 @@ exports.getSubCategoryById = async (req, res) => {
       req.params.id,
       req.params.subId
     );
-    console.log(req.params.id,
-      req.params.subId);
     
     if (!subcategory) {
       return res.status(404).json({ error: "Subcategory not found" });

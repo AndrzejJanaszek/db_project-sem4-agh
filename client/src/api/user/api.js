@@ -10,6 +10,7 @@ const BASE_URL = "http://localhost:5000/api";
  * Dodaje produkt do koszyka lub zwiększa jego ilość.
  * Jeśli produkt już istnieje, backend zwiększy jego count.
  * @param {string} productId
+ * @param {string} variantId
  * @param {number} count
  */
 export const addProductToCart = async (productId, variantId, count = 1) => {
@@ -33,6 +34,7 @@ export const addProductToCart = async (productId, variantId, count = 1) => {
  * Usuwa produkt z koszyka lub zmniejsza jego ilość.
  * Jeśli count po zmniejszeniu <= 0, backend usunie produkt całkowicie.
  * @param {string} productId
+ * @param {string} variantId
  * @param {number} count
  */
 export const removeProductFromCart = async (productId, variantId, count = 0) => {
@@ -68,4 +70,28 @@ export const getCartProducts = async () => {
   }
 
   return await res.json();
+};
+
+export const makeTransaction = async (city, street, postcode, products) => {
+  const userId = await getUserIdFromJWT();
+
+  const res = await fetch(`${BASE_URL}/transactions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId,
+      city,
+      street,
+      postcode,
+      products,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Nie udało się utworzyć transakcji");
+  }
+
+  return await res.json(); // może zwrócić np. id transakcji
 };
