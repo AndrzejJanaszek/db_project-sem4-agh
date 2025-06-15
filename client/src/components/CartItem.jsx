@@ -4,7 +4,7 @@ import styles from "../pages/user/css/Cart.module.css";
 const CartItem = ({
   img,
   name,
-  amount,
+  count,
   price,
   currency,
   onIncrease,
@@ -22,8 +22,8 @@ const CartItem = ({
       <div className={styles.cartItemPanel}>
         <button className="btnGrey" onClick={onDecrease}>-</button>
         
-        <div className={styles.amount}>
-          <span>{amount}</span>
+        <div className={styles.count}>
+          <span>{count}</span>
           <span>szt.</span>
         </div>
         
@@ -33,7 +33,7 @@ const CartItem = ({
         
         <div className={styles.cartItemPanelPrice}>
           <span className={styles.cartItemPanelPriceValue}>
-            {(price * amount).toFixed(2)}
+            {(price * count).toFixed(2)}
           </span>
           <span className={styles.cartItemPanelPriceCurrency}>{currency}</span>
         </div>

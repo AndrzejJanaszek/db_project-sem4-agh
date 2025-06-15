@@ -69,7 +69,7 @@ const Cart = () => {
             key={item.variantId}
             img={`/${item.image}`}
             name={`${item.productName} - ${item.variantName}`}
-            amount={item.count}
+            count={item.count}
             price={item.price}
             currency="zł"
             onIncrease={() => handleIncrease(item.productId, item.variantId)}

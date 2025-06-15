@@ -8,7 +8,7 @@ const parameterSchema = new mongoose.Schema({
 const variantSchema = new mongoose.Schema({
   name: { type: String, required: true },
   price: { type: Number, required: true },
-  amount: { type: Number, required: true }, // TODO: XD 0 spójnosći amount w mongo count w cart myusuql
+  count: { type: Number, required: true },
   parameters: [parameterSchema],
   images: [{ type: String }],
   description: { type: String }

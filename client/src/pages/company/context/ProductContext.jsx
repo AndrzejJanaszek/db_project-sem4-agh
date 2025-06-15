@@ -33,7 +33,7 @@ export const ProductProvider = ({ children, productId }) => {
                 description: "",
                 parameters: [],
                 price: 0,
-                amount: 0,
+                count: 0,
             };
 
             const productWithNewVariant = await api.createVariant(productId, newVariant);

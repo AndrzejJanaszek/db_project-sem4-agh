@@ -17,7 +17,7 @@ const ProductVariantDataForm = () => {
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
-    const [amount, setAmount] = useState("");
+    const [count, setCount] = useState("");
 
     // dane z podsekcji:
     const [parameters, setParameters] = useState([]);
@@ -28,7 +28,7 @@ const ProductVariantDataForm = () => {
         if (variant) {
             setName(variant.name || "");
             setPrice(variant.price || "");
-            setAmount(variant.amount || "");
+            setCount(variant.count || "");
             setParameters(variant.parameters || []);
             setImages(variant.images || []);
             setDescription(variant.description || "");
@@ -42,7 +42,7 @@ const ProductVariantDataForm = () => {
         updateAndSaveVariant(variant._id, {
             name,
             price,
-            amount,
+            count,
             parameters,
             images,
             description,
@@ -77,9 +77,9 @@ const ProductVariantDataForm = () => {
                         <p>Ilość</p>
                         <input
                             type="number"
-                            name="amount"
-                            value={amount}
-                            onChange={(e) => setAmount(e.target.value)}
+                            name="count"
+                            value={count}
+                            onChange={(e) => setCount(e.target.value)}
                         />
                     </label>
                 </div>
