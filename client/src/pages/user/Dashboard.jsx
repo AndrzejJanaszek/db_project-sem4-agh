@@ -10,7 +10,7 @@ const Dashboard = () => {
           <Link to="/user/cart">Koszyk</Link>
         </li>
         <li>
-          <Link to="/user/edit">Zmień dane użytkownika</Link>
+          <Link to="/user/data">Zmień dane użytkownika</Link>
         </li>
         <li>
           <Link to="/user/transactions">historia transakcji</Link>

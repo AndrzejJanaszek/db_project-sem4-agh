@@ -91,3 +91,35 @@ export const getCompanyProductList = async (companyId) => {
     throw error;
   }
 };
+
+
+export const getCompanyProfileData = async () => {
+  const res = await authFetch(`${BASE_URL}/company/profile`);
+  
+  if (!res.ok) throw new Error('Nie udało się pobrać danych firmy');
+  return await res.json();
+};
+
+export const updateCompanyData = async (data) => {
+  const res = await authFetch(`${BASE_URL}/company/update`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || 'Błąd aktualizacji danych firmy');
+  }
+  return await res.json();
+};
+
+export const updateCompanyPassword = async (passwordData) => {
+  const res = await authFetch(`${BASE_URL}/company/password`, {
+    method: 'PUT',
+    body: JSON.stringify(passwordData),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || 'Błąd zmiany hasła firmy');
+  }
+  return await res.json();
+};

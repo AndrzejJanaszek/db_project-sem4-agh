@@ -1,0 +1,54 @@
+.container {
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.heading {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-weight: 500;
+  color: #555;
+}
+
+.input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+}
+
+.button {
+  padding: 0.75rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #0059c1;
+}
+
+.message {
+  margin-top: 1rem;
+  color: crimson;
+  font-weight: bold;
+}

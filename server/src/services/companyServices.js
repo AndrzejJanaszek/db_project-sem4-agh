@@ -12,14 +12,15 @@ exports.getCompanyByEmail = async (email) => {
 };
 
 exports.getCompanyById = async (id) => {
-    const [existingUsers] = await db.query(
-        "SELECT * FROM companies WHERE id = ?",
-        [id]
-    );
-
-    return existingUsers[0];
+  const [companies] = await db.query(
+    `SELECT c.id, c.name, c.nip, c.email, a.city, a.postcode, a.street
+     FROM companies c
+     JOIN address a ON c.address_id = a.id
+     WHERE c.id = ?`,
+    [id]
+  );
+  return companies[0];
 };
-
 exports.createCompany = async (company) => {
     const hashedPassword = await bcrypt.hash(company.password, 10);
 
@@ -72,6 +73,15 @@ exports.updateCompany = async (id, { name, nip, email, city, postcode, street })
 
     const addressId = companies[0].address_id;
 
+    // Sprawdzenie, czy email jest już zajęty przez inną firmę (inny niż aktualizowana)
+    const [emailCheck] = await db.query(
+        "SELECT id FROM companies WHERE email = ? AND id <> ?",
+        [email, id]
+    );
+    if (emailCheck.length > 0) {
+        throw new Error("Podany email jest już zajęty");
+    }
+
     await db.query(
         "UPDATE address SET city = ?, postcode = ?, street = ? WHERE id = ?",
         [city, postcode, street, addressId]
@@ -83,7 +93,8 @@ exports.updateCompany = async (id, { name, nip, email, city, postcode, street })
     );
 };
 
-exports.updateCompanyPassword = async (id, hashedPassword) => {
+exports.updateCompanyPassword = async (id, password) => {
+    const hashedPassword = await bcrypt.hash(password, 10);
     await db.query(
         "UPDATE companies SET password = ? WHERE id = ?",
         [hashedPassword, id]

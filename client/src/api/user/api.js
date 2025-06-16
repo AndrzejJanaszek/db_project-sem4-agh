@@ -3,6 +3,7 @@
 // 
 // makeTransaction()
 import { getUserIdFromJWT } from "../../utils/jwt"
+import { authFetch } from "../../utils/authFetch"
 
 const BASE_URL = "http://localhost:5000/api";
 
@@ -110,5 +111,35 @@ export const getTransactionHistory = async () => {
     throw new Error("Nie udało się pobrać historii transakcji.");
   }
 
+  return await res.json();
+};
+
+export const getUserProfileData = async () => {
+  const res = await authFetch(`${BASE_URL}/user/profile`);
+  if (!res.ok) throw new Error('Nie udało się pobrać danych użytkownika');
+  return await res.json();
+};
+
+export const updateUserData = async (data) => {
+  const res = await authFetch(`${BASE_URL}/user/update`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || 'Błąd aktualizacji danych użytkownika');
+  }
+  return await res.json();
+};
+
+export const updateUserPassword = async (passwordData) => {
+  const res = await authFetch(`${BASE_URL}/user/password`, {
+    method: 'PUT',
+    body: JSON.stringify(passwordData),
+  });
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || 'Błąd zmiany hasła użytkownika');
+  }
   return await res.json();
 };

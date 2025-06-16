@@ -9,6 +9,8 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const transactionRoutes = require("./routes/transactionRoutes");
+const userRoutes = require("./routes/userRoutes");
+const companyRoutes = require("./routes/companyRoutes");
 
 const startServer = async () => {
   try {
@@ -30,6 +32,10 @@ const startServer = async () => {
     app.use("/api/reviews", reviewRoutes);
 
     app.use("/api/transactions", transactionRoutes);
+
+    app.use("/api/user", userRoutes);
+
+    app.use("/api/company", companyRoutes);
 
     app.get("/", (req, res) => {
       res.send("API is running");

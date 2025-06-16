@@ -11,30 +11,33 @@ exports.getUserByEmail = async (email) => {
     return existingUsers[0];
 };
 
-exports.getUserById = async (id) => {
-    const [existingUsers] = await db.query(
-        "SELECT * FROM users WHERE id = ?",
-        [id]
-    );
 
-    return existingUsers[0];
+exports.getUserById = async (id) => {
+  const [users] = await db.query(
+    `SELECT u.id, u.name, u.surname, u.email, a.city, a.postcode, a.street
+     FROM users u
+     JOIN address a ON u.address_id = a.id
+     WHERE u.id = ?`,
+    [id]
+  );
+  return users[0];
 };
 
 exports.createUser = async (user) => {
-    const hashedPassword = await bcrypt.hash(user.password, 10);
+  const hashedPassword = await bcrypt.hash(user.password, 10);
 
-    const [addressResult] = await db.query(
-        "INSERT INTO address (city, postcode, street) VALUES (?, ?, ?)",
-        [user.city, user.postcode, user.street]
-    );
-    const addressId = addressResult.insertId;
+  const [addressResult] = await db.query(
+    "INSERT INTO address (city, postcode, street) VALUES (?, ?, ?)",
+    [user.city, user.postcode, user.street]
+  );
+  const addressId = addressResult.insertId;
 
-    const [userResult] = await db.query(
-        "INSERT INTO users (name, surname, email, password, address_id) VALUES (?, ?, ?, ?, ?)",
-        [user.name, user.surname, user.email, hashedPassword, addressId]
-    );
+  const [userResult] = await db.query(
+    "INSERT INTO users (name, surname, email, password, address_id) VALUES (?, ?, ?, ?, ?)",
+    [user.name, user.surname, user.email, hashedPassword, addressId]
+  );
 
-    return userResult.insertId;
+  return userResult.insertId;
 };
 
 exports.generateUserJWT = async (user) => {
@@ -43,7 +46,6 @@ exports.generateUserJWT = async (user) => {
         id: user.id,
         email: user.email,
         name: user.name,
-        surname: user.surname,
         type: "user",   // TODO:
       },
       process.env.JWT_SECRET,
@@ -62,28 +64,38 @@ exports.deleteUser = async (id) => {
 };
 
 exports.updateUser = async (id, { name, surname, email, city, postcode, street }) => {
-    const [users] = await db.query("SELECT address_id FROM users WHERE id = ?", [id]);
-    
-    if (users.length === 0) {
-        throw new Error("User not found");
-    }
+  const [users] = await db.query("SELECT address_id FROM users WHERE id = ?", [id]);
 
-    const addressId = users[0].address_id;
+  if (users.length === 0) {
+    throw new Error("User not found");
+  }
 
-    await db.query(
-        "UPDATE users SET name = ?, surname = ?, email = ? WHERE id = ?",
-        [name, surname, email, id]
-    );
+  const addressId = users[0].address_id;
 
-    await db.query(
-        "UPDATE address SET city = ?, postcode = ?, street = ? WHERE id = ?",
-        [city, postcode, street, addressId]
-    );
+  // Sprawdzenie, czy email jest już zajęty przez innego użytkownika (inny niż aktualizowany)
+  const [emailCheck] = await db.query(
+    "SELECT id FROM users WHERE email = ? AND id <> ?",
+    [email, id]
+  );
+  if (emailCheck.length > 0) {
+    throw new Error("Podany email jest już zajęty");
+  }
 
-    return true;
+  await db.query(
+    "UPDATE users SET name = ?, surname = ?, email = ? WHERE id = ?",
+    [name, surname, email, id]
+  );
+
+  await db.query(
+    "UPDATE address SET city = ?, postcode = ?, street = ? WHERE id = ?",
+    [city, postcode, street, addressId]
+  );
+
+  return true;
 };
 
-exports.updateUserPassword = async (id, hashedPassword) => {
+exports.updateUserPassword = async (id, password) => {
+    const hashedPassword = await bcrypt.hash(password, 10);
     await db.query(
         "UPDATE users SET password = ? WHERE id = ?",
         [hashedPassword, id]

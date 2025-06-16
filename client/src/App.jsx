@@ -25,6 +25,7 @@ import CompanyDataPanel from "./pages/company/DataPanel";
 import CategoryPage from "./pages/shop/CategoryPage";
 import CompanyDashboard from "./pages/company/Dashboard";
 import UserDashboard from "./pages/user/Dashboard";
+import UserDataPanel from "./pages/user/DataPanel";
 
 
 import RequireAuth from './components/RequireAuth';
@@ -73,6 +74,7 @@ function App() {
             <Route index element={<UserDashboard />} />
             <Route path="cart" element={<Cart />} />
             <Route path="transactions" element={<TransactionHistory />} />
+            <Route path="data" element={<UserDataPanel />} />
           </Route>
 
           <Route path="product" element={<Product />} />
